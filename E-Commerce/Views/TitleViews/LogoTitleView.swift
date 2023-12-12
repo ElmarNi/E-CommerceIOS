@@ -31,7 +31,6 @@ class LogoTitleView: UIView {
             make.left.width.centerY.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(5)
             make.bottom.equalToSuperview().inset(5)
-            
         }
     }
     

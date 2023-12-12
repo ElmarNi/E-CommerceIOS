@@ -24,6 +24,7 @@
 		EBB8FF692B1DA69E0001AFF9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF682B1DA69E0001AFF9 /* TabBarController.swift */; };
 		EBB8FF6B2B1DA6B70001AFF9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF6A2B1DA6B70001AFF9 /* HomeViewController.swift */; };
 		EBB8FF6F2B1DB8DC0001AFF9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */; };
+		EBBF8E2B2B28498E00CD3480 /* HomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBF8E2A2B28498D00CD3480 /* HomeTitleView.swift */; };
 		EBDECDF02B233CB3007D9F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDECDEF2B233CB3007D9F1C /* User.swift */; };
 		EBEC7C782B20C42A00735E2F /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC7C772B20C42A00735E2F /* UIComponents.swift */; };
 		EBEC7C7A2B20DE3300735E2F /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC7C792B20DE3300735E2F /* ApiCaller.swift */; };
@@ -51,6 +52,7 @@
 		EBB8FF682B1DA69E0001AFF9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EBB8FF6A2B1DA6B70001AFF9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		EBBF8E2A2B28498D00CD3480 /* HomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleView.swift; sourceTree = "<group>"; };
 		EBDECDEF2B233CB3007D9F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EBEC7C772B20C42A00735E2F /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		EBEC7C792B20DE3300735E2F /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
@@ -142,7 +144,7 @@
 		EB60FCA12B1A18A8004DF45F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EBAC61B12B1F5CEC00F18D31 /* LoginAndSignUp */,
+				EBBF8E292B28495E00CD3480 /* TitleViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,12 +196,13 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		EBAC61B12B1F5CEC00F18D31 /* LoginAndSignUp */ = {
+		EBBF8E292B28495E00CD3480 /* TitleViews */ = {
 			isa = PBXGroup;
 			children = (
 				EBAC61B22B1F5D1C00F18D31 /* LogoTitleView.swift */,
+				EBBF8E2A2B28498D00CD3480 /* HomeTitleView.swift */,
 			);
-			path = LoginAndSignUp;
+			path = TitleViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +321,7 @@
 			files = (
 				EBEC7C782B20C42A00735E2F /* UIComponents.swift in Sources */,
 				EBAC61B32B1F5D1C00F18D31 /* LogoTitleView.swift in Sources */,
+				EBBF8E2B2B28498E00CD3480 /* HomeTitleView.swift in Sources */,
 				EBAC61B02B1F5C8C00F18D31 /* SignUpViewController.swift in Sources */,
 				EB80A0FA2B1E788B009EDF41 /* PageRootViewController.swift in Sources */,
 				EBB8FF6B2B1DA6B70001AFF9 /* HomeViewController.swift in Sources */,

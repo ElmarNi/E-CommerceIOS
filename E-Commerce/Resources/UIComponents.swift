@@ -124,6 +124,12 @@ class Spinner: UIActivityIndicatorView {
         self.hidesWhenStopped = true
     }
     
+    init(color: UIColor) {
+        super.init(frame: .zero)
+        self.color = color
+        self.hidesWhenStopped = true
+    }
+    
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

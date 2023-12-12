@@ -24,6 +24,12 @@ extension UIViewController: URLSessionDelegate {
     }
 }
 
+extension UIView: URLSessionDelegate {
+    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
+    }
+}
+
 //MARK: download image from url
 extension UIImageView {
     func download(from url: URL, sessionDelegate: URLSessionDelegate, completion: (() -> Void)? = nil) {
@@ -56,5 +62,13 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)
+    }
+}
+
+extension UIView {
+    func showAlert(title: String, message: String) {
+        if let topController = UIApplication.shared.keyWindow?.rootViewController {
+            topController.showAlert(title: title, message: message)
+        }
     }
 }
