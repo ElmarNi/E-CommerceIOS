@@ -11,18 +11,26 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().tintColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.44, green: 0.45, blue: 0.52, alpha: 1)
         
         let homeVC = HomeViewController()
-        let searchVC = SearchViewController()
+        let categoriesVC = CategoriesViewController()
+        let cartVC = CartViewController()
+        let profileVC = ProfileViewController()
         
         let homeNavVC = UINavigationController(rootViewController: homeVC)
-        let searchNavVC = UINavigationController(rootViewController: searchVC)
+        let categoriesNavVC = UINavigationController(rootViewController: categoriesVC)
+        let cartNavVC = UINavigationController(rootViewController: cartVC)
+        let profileNavVC = UINavigationController(rootViewController: profileVC)
         
-        homeNavVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
-        searchNavVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+        homeNavVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home-inactive"), selectedImage: UIImage(named: "home-active"))
         
-        viewControllers = [homeNavVC, searchNavVC]
+        categoriesNavVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(named: "categories-inactive"), selectedImage: UIImage(named: "categories-active"))
+        cartNavVC.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(named: "cart-inactive"), selectedImage: UIImage(named: "cart-active"))
+        profileNavVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile-inactive"), selectedImage: UIImage(named: "profile-active"))
+        
+        viewControllers = [homeNavVC, categoriesNavVC, cartNavVC, profileNavVC]
     }
 
 }

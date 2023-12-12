@@ -111,15 +111,13 @@ class LoginViewController: UIViewController {
         layer.isHidden = false
         spinner.startAnimating()
         DispatchQueue.main.async {
-            ApiCaller.shared.login(username: username, password: password) {[weak self] success in
+            ApiCaller.shared.login(sessionDelegate: self, username: username, password: password) {[weak self] success in
                 if success {
                     UserDefaults.standard.setValue(true, forKey: "isLaunched")
                     self?.navigationController?.viewControllers = [TabBarController()]
                 }
                 else {
-                    let alertController = UIAlertController(title: "Error", message: "Username or Passowrd is wrong", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                    self?.present(alertController, animated: true)
+                    self?.showAlert(title: "Error", message: "Username or Passowrd is wrong")
                 }
                 self?.layer.isHidden = true
                 self?.spinner.stopAnimating()

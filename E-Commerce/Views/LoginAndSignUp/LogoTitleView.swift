@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class LogoTitleView: UIView {
     
@@ -17,6 +18,7 @@ class LogoTitleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(imageView)
         setupUI()
     }
     
@@ -25,15 +27,12 @@ class LogoTitleView: UIView {
     }
     
     private func setupUI() {
-        imageView.contentMode = .scaleAspectFit
-        addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        imageView.snp.makeConstraints { make in
+            make.left.width.centerY.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(5)
+            make.bottom.equalToSuperview().inset(5)
+            
+        }
     }
     
 }

@@ -170,14 +170,12 @@ class SignUpViewController: UIViewController {
             layer.isHidden = false
             spinner.startAnimating()
             DispatchQueue.main.async {
-                ApiCaller.shared.register(username: username, password: password, fullname: fullname) {[weak self] success in
+                ApiCaller.shared.register(sessionDelegate: self, username: username, password: password, fullname: fullname) {[weak self] success in
                     if success {
                         self?.navigationController?.viewControllers = [LoginViewController()]
                     }
                     else {
-                        let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                        self?.present(alertController, animated: true)
+                        self?.showAlert(title: "Error", message: "Something went wrong")
                     }
                     self?.layer.isHidden = true
                     self?.spinner.stopAnimating()
