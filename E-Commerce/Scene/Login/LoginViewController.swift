@@ -1,15 +1,14 @@
 //
-//  SignUpViewController.swift
+//  LoginViewController.swift
 //  E-Commerce
 //
 //  Created by Elmar Ibrahimli on 05.12.23.
 //
 
 import UIKit
-import SnapKit
 
-class SignUpViewController: UIViewController {
-    
+class LoginViewController: UIViewController {
+
     private let mainFrame = UIView()
     private let layer: UIView = {
         let view = UIView()
@@ -21,40 +20,28 @@ class SignUpViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.text = "Signup"
+        label.text = "Login"
         label.numberOfLines = 1
         return label
     }()
     
     private let haveAccountLabel: UILabel = {
         let label = UILabel()
-        label.text = "Already have an account?"
+        label.text = "Don't have an account?"
         label.numberOfLines = 1
         label.textColor = UIColor(red: 0.44, green: 0.45, blue: 0.52, alpha: 1)
         return label
     }()
     
-    private let loginButton = CyanButton(title: "Login")
-    
-    private let fullnameLabel = UserLabel(text: "Fullname")
-    
-    private let fullnameTextField = PaddedTextField(placeholder: "Enter your fullname")
-    
-    private let fullnameError = ErrorLabel()
+    private let signupButton = CyanButton(title: "Signup")
     
     private let usernameLabel = UserLabel(text: "Username")
     
     private let usernameTextField = PaddedTextField(placeholder: "Enter your Username")
     
-    private let usernameError = ErrorLabel()
-    
     private let passwordLabel = UserLabel(text: "Password")
     
     private let passwordTextField = PaddedPasswordTextField(placeholder: "Enter your Password")
-    
-    private let passwordError = ErrorLabel()
-    
-    private let spinner = Spinner()
     
     private let toggleButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -66,28 +53,27 @@ class SignUpViewController: UIViewController {
         return button
     }()
     
-    private let createAccountButton = RoundedBlackButton(title: "Create Account")
+    private let loginButton = RoundedBlackButton(title: "Login")
     
+    private let spinner = Spinner()
+    private let viewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = .black
         navigationItem.titleView = LogoTitleView()
         
         mainFrame.addSubview(titleLabel)
         mainFrame.addSubview(haveAccountLabel)
-        mainFrame.addSubview(loginButton)
-        mainFrame.addSubview(fullnameLabel)
-        mainFrame.addSubview(fullnameTextField)
-        mainFrame.addSubview(fullnameError)
+        mainFrame.addSubview(signupButton)
         mainFrame.addSubview(usernameLabel)
         mainFrame.addSubview(usernameTextField)
-        mainFrame.addSubview(usernameError)
         mainFrame.addSubview(passwordLabel)
         mainFrame.addSubview(passwordTextField)
-        mainFrame.addSubview(passwordError)
         passwordTextField.addSubview(toggleButton)
-        mainFrame.addSubview(createAccountButton)
+        mainFrame.addSubview(loginButton)
         view.addSubview(mainFrame)
         view.addSubview(layer)
         view.addSubview(spinner)
@@ -97,8 +83,8 @@ class SignUpViewController: UIViewController {
         }
         
         toggleButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -115,71 +101,29 @@ class SignUpViewController: UIViewController {
         toggleButton.isSelected = !passwordTextField.isSecureTextEntry
     }
     
-    @objc private func loginButtonTapped() {
-        navigationController?.pushViewController(LoginViewController(), animated: true)
+    @objc private func signupButtonTapped() {
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
-    @objc private func createAccountButtonTapped() {
-        guard let fullname = fullnameTextField.text?.trimmingCharacters(in: .whitespaces),
-              let username = usernameTextField.text?.trimmingCharacters(in: .whitespaces),
+    @objc private func loginButtonTapped() {
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespaces),
               let password = passwordTextField.text
         else { return }
-        var isError = false
-        fullnameError.isHidden = !fullname.isEmpty
-        usernameError.isHidden = !username.isEmpty
         
-        if fullname.isEmpty {
-            fullnameError.text = "Please enter a fullname"
-            fullnameTextField.layer.borderColor = UIColor.red.cgColor
-            isError = true
-        }
-        else {
-            fullnameError.text = ""
-            fullnameTextField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
-        }
+        layer.isHidden = false
+        spinner.startAnimating()
         
-        if username.isEmpty {
-            usernameError.text = "Please enter a username"
-            usernameTextField.layer.borderColor = UIColor.red.cgColor
-            isError = true
-        }
-        else {
-            usernameError.text = ""
-            usernameTextField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
-        }
-        
-        if password.isEmpty {
-            passwordError.isHidden = false
-            passwordError.text = "Please enter a password"
-            passwordTextField.layer.borderColor = UIColor.red.cgColor
-            isError = true
-        }
-        else if password.count < 8 {
-            passwordError.isHidden = false
-            passwordError.text = "Password must be contain min 8 characters"
-            passwordTextField.layer.borderColor = UIColor.red.cgColor
-            isError = true
-        }
-        else {
-            passwordError.isHidden = true
-            passwordError.text = ""
-            passwordTextField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
-        }
-        
-        if !isError {
-            layer.isHidden = false
-            spinner.startAnimating()
-            DispatchQueue.main.async {
-                ApiCaller.shared.register(sessionDelegate: self, username: username, password: password, fullname: fullname) {[weak self] success in
-                    if success {
-                        self?.navigationController?.viewControllers = [LoginViewController()]
-                    }
-                    else {
-                        self?.showAlert(title: "Error", message: "Something went wrong")
-                    }
-                    self?.layer.isHidden = true
-                    self?.spinner.stopAnimating()
+        DispatchQueue.main.async {[weak self] in
+            self?.viewModel.login(sessionDelegate: self, username: username, password: password) {[weak self] success in
+                if success {
+                    UserDefaults.standard.setValue(true, forKey: "isLaunched")
+                    self?.navigationController?.viewControllers = [TabBarController()]
                 }
+                else {
+                    self?.showAlert(title: "Error", message: "Username or Passowrd is wrong")
+                }
+                self?.layer.isHidden = true
+                self?.spinner.stopAnimating()
             }
         }
     }
@@ -201,30 +145,15 @@ class SignUpViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
         }
         
-        loginButton.snp.makeConstraints { make in
+        signupButton.snp.makeConstraints { make in
             make.left.equalTo(haveAccountLabel.snp.right).offset(5)
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.height.equalTo(haveAccountLabel.snp.height)
         }
         
-        fullnameLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.top.equalTo(loginButton.snp.bottom).offset(24)
-        }
-        
-        fullnameTextField.snp.makeConstraints { make in
-            make.left.width.equalToSuperview()
-            make.top.equalTo(fullnameLabel.snp.bottom).offset(8)
-        }
-        
-        fullnameError.snp.makeConstraints { make in
-            make.left.width.equalToSuperview()
-            make.top.equalTo(fullnameTextField.snp.bottom).offset(4)
-        }
-        
         usernameLabel.snp.makeConstraints { make in
             make.left.equalToSuperview()
-            make.top.equalTo(fullnameError.snp.bottom).offset(16)
+            make.top.equalTo(signupButton.snp.bottom).offset(16)
         }
         
         usernameTextField.snp.makeConstraints { make in
@@ -232,24 +161,14 @@ class SignUpViewController: UIViewController {
             make.top.equalTo(usernameLabel.snp.bottom).offset(8)
         }
         
-        usernameError.snp.makeConstraints { make in
-            make.left.width.equalToSuperview()
-            make.top.equalTo(usernameTextField.snp.bottom).offset(4)
-        }
-        
         passwordLabel.snp.makeConstraints { make in
             make.left.equalToSuperview()
-            make.top.equalTo(usernameError.snp.bottom).offset(16)
+            make.top.equalTo(usernameTextField.snp.bottom).offset(16)
         }
         
         passwordTextField.snp.makeConstraints { make in
             make.left.width.equalToSuperview()
             make.top.equalTo(passwordLabel.snp.bottom).offset(8)
-        }
-        
-        passwordError.snp.makeConstraints { make in
-            make.left.width.equalToSuperview()
-            make.top.equalTo(passwordTextField.snp.bottom).offset(4)
         }
         
         toggleButton.snp.makeConstraints { make in
@@ -259,9 +178,9 @@ class SignUpViewController: UIViewController {
             make.height.equalTo(20)
         }
         
-        createAccountButton.snp.makeConstraints { make in
+        loginButton.snp.makeConstraints { make in
             make.left.width.equalToSuperview()
-            make.top.equalTo(passwordError.snp.bottom).offset(24)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(24)
             make.height.equalTo(60)
         }
         
@@ -273,10 +192,10 @@ class SignUpViewController: UIViewController {
             make.left.right.top.bottom.equalToSuperview()
         }
     }
-    
+
 }
 
-extension SignUpViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
