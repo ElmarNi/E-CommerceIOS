@@ -18,8 +18,7 @@ final class LoginViewModel {
                 UserDefaults.standard.setValue(result.token, forKey: "token")
                 UserDefaults.standard.setValue(result.id, forKey: "userID")
                 completion(true)
-            case .failure(_):
-                completion(false)
+            default: completion(false)
             }
         }
     }

@@ -13,6 +13,8 @@
 		EB60FC8E2B1A17C0004DF45F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60FC8D2B1A17C0004DF45F /* SceneDelegate.swift */; };
 		EB60FC952B1A17C2004DF45F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB60FC942B1A17C2004DF45F /* Assets.xcassets */; };
 		EB60FC982B1A17C2004DF45F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB60FC962B1A17C2004DF45F /* LaunchScreen.storyboard */; };
+		EB66E73A2B35B321008D4AC3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB66E7392B35B321008D4AC3 /* Product.swift */; };
+		EB66E73C2B35B8C9008D4AC3 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB66E73B2B35B8C9008D4AC3 /* ProductsResponse.swift */; };
 		EB74E11C2B3561830097CD7B /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E11B2B3561830097CD7B /* WishlistViewController.swift */; };
 		EB74E1202B356E720097CD7B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E11F2B356E710097CD7B /* LoginViewModel.swift */; };
 		EB74E1252B356EE00097CD7B /* UIImageView+download.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E1242B356EE00097CD7B /* UIImageView+download.swift */; };
@@ -49,6 +51,8 @@
 		EB60FC942B1A17C2004DF45F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB60FC972B1A17C2004DF45F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB60FC992B1A17C2004DF45F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB66E7392B35B321008D4AC3 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		EB66E73B2B35B8C9008D4AC3 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
 		EB74E11B2B3561830097CD7B /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		EB74E11F2B356E710097CD7B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EB74E1242B356EE00097CD7B /* UIImageView+download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+download.swift"; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				EBDECDEF2B233CB3007D9F1C /* User.swift */,
 				EB74E1332B3584DF0097CD7B /* Login.swift */,
 				EB74E1412B359F1D0097CD7B /* SignUp.swift */,
+				EB66E7392B35B321008D4AC3 /* Product.swift */,
+				EB66E73B2B35B8C9008D4AC3 /* ProductsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -415,10 +421,12 @@
 				EB9A58292B21F05800FE585A /* CartViewController.swift in Sources */,
 				EB60FC8C2B1A17C0004DF45F /* AppDelegate.swift in Sources */,
 				EB74E1362B3589850097CD7B /* UIViewController+UrlSessionDelegate.swift in Sources */,
+				EB66E73C2B35B8C9008D4AC3 /* ProductsResponse.swift in Sources */,
 				EB60FC8E2B1A17C0004DF45F /* SceneDelegate.swift in Sources */,
 				EB80A0F82B1E787C009EDF41 /* PageViewController.swift in Sources */,
 				EB74E1422B359F1D0097CD7B /* SignUp.swift in Sources */,
 				EBAC61AE2B1F5B7700F18D31 /* LoginViewController.swift in Sources */,
+				EB66E73A2B35B321008D4AC3 /* Product.swift in Sources */,
 				EB74E1252B356EE00097CD7B /* UIImageView+download.swift in Sources */,
 				EB13DA642B35A0B60039541F /* HomeViewModel.swift in Sources */,
 				EBB8FF6F2B1DB8DC0001AFF9 /* EntryViewController.swift in Sources */,

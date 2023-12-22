@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: LogoTitleView())
         getUserImage()
         setupUI()
-        
+        setupUIWithDatas()
 //        UserDefaults.standard.setValue(nil, forKey: "token")
 //        UserDefaults.standard.setValue(nil, forKey: "userID")
 //        UserDefaults.standard.setValue(nil, forKey: "isLaunched")
@@ -39,6 +39,29 @@ class HomeViewController: UIViewController {
             }
         }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: homeTitleView)
+    }
+    
+    private func setupUIWithDatas() {
+        let group = DispatchGroup()
+        group.enter()
+        group.enter()
+        group.enter()
+        
+        self.viewModel.topProducts(sessionDelegate: self) { success in
+            group.leave()
+        }
+        
+        self.viewModel.categories(sessionDelegate: self) { success in
+            group.leave()
+        }
+        
+        self.viewModel.latestProducts(sessionDelegate: self) { success in
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+//            print(self.viewModel.sections)
+        }
     }
     
     private func setupUI() {

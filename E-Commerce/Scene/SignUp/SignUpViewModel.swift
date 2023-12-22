@@ -22,10 +22,8 @@ final class SignUpViewModel {
                                       method: .POST)
         { response in
             switch response {
-            case .success(_):
-                completion(true)
-            case .failure(_):
-                completion(false)
+            case .success(_): completion(true)
+            default: completion(false)
             }
         }
     }
