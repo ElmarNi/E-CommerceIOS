@@ -9,23 +9,84 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
-    
+
+    private let spinner = Spinner()
     private let viewModel = HomeViewModel()
+    private let collectionView: UICollectionView = {
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewCompositionalLayout(
+                sectionProvider:
+                    { sectionIndex, _ in
+                        return HomeViewController.configureCollectionViewLayout(sectionIndex: sectionIndex)
+                    }
+            )
+        )
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+        collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        collectionView.register(TitleView.self, forSupplementaryViewOfKind: "TitleView", withReuseIdentifier: TitleView.identifier)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = .black
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: LogoTitleView())
-        getUserImage()
+        
+        view.addSubview(collectionView)
+        view.addSubview(spinner)
+        userImage()
         setupUI()
         setupUIWithDatas()
-//        UserDefaults.standard.setValue(nil, forKey: "token")
-//        UserDefaults.standard.setValue(nil, forKey: "userID")
-//        UserDefaults.standard.setValue(nil, forKey: "isLaunched")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        spinner.startAnimating()
+        
+        //        UserDefaults.standard.setValue(nil, forKey: "token")
+        //        UserDefaults.standard.setValue(nil, forKey: "userID")
+        //        UserDefaults.standard.setValue(nil, forKey: "isLaunched")
     }
     
-    private func getUserImage() {
+    private static func configureCollectionViewLayout(sectionIndex: Int) -> NSCollectionLayoutSection {
+        var itemWidth: CGFloat = 1/3
+        var groupHeiht: CGFloat = 60
+        var scrollType = UICollectionLayoutSectionOrthogonalScrollingBehavior.continuous
+        
+        if sectionIndex == 1 {
+            itemWidth = 1/2
+            groupHeiht = 227
+            scrollType = .none
+        }
+        
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(itemWidth),
+                                                                             heightDimension: .fractionalHeight(1)))
+        
+        item.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4)
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                                                          heightDimension: .absolute(groupHeiht)),
+                                                       subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = scrollType
+        
+        let titleView = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(40)),
+            elementKind: "TitleView",
+            alignment: .top)
+        
+        titleView.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
+        
+        section.boundarySupplementaryItems = [titleView]
+        return section
+    }
+    
+    private func userImage() {
         let homeTitleView = HomeTitleView()
         homeTitleView.configure(profileImage: nil)
         DispatchQueue.main.async {[weak self] in
@@ -43,28 +104,88 @@ class HomeViewController: UIViewController {
     
     private func setupUIWithDatas() {
         let group = DispatchGroup()
-        group.enter()
+        var categories = [String]()
+        var products = [Product]()
+        //        group.enter()
         group.enter()
         group.enter()
         
-        self.viewModel.topProducts(sessionDelegate: self) { success in
+        //        self.viewModel.topProducts(sessionDelegate: self) { success in
+        //            group.leave()
+        //        }
+        
+        self.viewModel.categories(sessionDelegate: self) { result in
+            if let result = result {
+                categories = result
+            }
             group.leave()
         }
         
-        self.viewModel.categories(sessionDelegate: self) { success in
+        self.viewModel.latestProducts(sessionDelegate: self) { result in
+            if let result = result {
+                products = result
+            }
             group.leave()
         }
         
-        self.viewModel.latestProducts(sessionDelegate: self) { success in
-            group.leave()
-        }
-        
-        group.notify(queue: .main) {
-//            print(self.viewModel.sections)
+        group.notify(queue: .main) { [weak self] in
+            self?.viewModel.sections.append(.categories(data: categories))
+            self?.viewModel.sections.append(.latestProducts(data: products))
+            self?.collectionView.reloadData()
+            self?.spinner.stopAnimating()
         }
     }
     
     private func setupUI() {
-        
+        collectionView.snp.makeConstraints { make in
+            make.top.height.equalToSuperview()
+            make.left.equalToSuperview().offset(12)
+            make.width.equalToSuperview().inset(12)
+        }
+        spinner.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return viewModel.sections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch viewModel.sections[section] {
+        case .categories(let categories):
+            return categories.count
+        case .latestProducts(let products):
+            return products.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch viewModel.sections[indexPath.section] {
+        case let .categories(categories):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell()
+            }
+            cell.configure(category: categories[indexPath.row])
+            return cell
+        case let .latestProducts(products):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell()
+            }
+            cell.configure(product: products[indexPath.row])
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == "TitleView",
+           let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TitleView.identifier, for: indexPath) as? TitleView
+        {
+            view.configure(title: viewModel.sections[indexPath.section].title, sectionIndex: indexPath.section)
+            return view
+        }
+        return UICollectionReusableView()
+    }
+    
 }

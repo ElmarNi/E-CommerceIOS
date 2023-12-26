@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     
     private let loginButton = RoundedBlackButton(title: "Login")
     
-    private let spinner = Spinner()
+    private let spinner = Spinner(color: .white)
     private let viewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()

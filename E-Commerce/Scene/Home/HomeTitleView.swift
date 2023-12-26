@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class HomeTitleView: UIView {
-    private let spinner = Spinner(color: .black)
+    private let spinner = Spinner()
     
     private let profileButton: UIButton = {
         let button = UIButton()

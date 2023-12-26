@@ -9,9 +9,16 @@ import Foundation
 
 final class HomeViewModel {
     enum Section {
-        case topProducts(data: [Product])
         case categories(data: [String])
         case latestProducts(data: [Product])
+        var title: String {
+            switch self {
+            case .categories:
+                return "Categories"
+            case .latestProducts:
+                return "Latest Products"
+            }
+        }
     }
     
     var sections = [Section]()
@@ -37,56 +44,53 @@ final class HomeViewModel {
         }
     }
     
-    func topProducts(sessionDelegate: URLSessionDelegate?, completion: @escaping (Bool) -> Void) {
-        NetworkManager.shared.request(sessionDelegate: sessionDelegate,
-                                      requestBody: nil,
-                                      type: ProductsResponse.self,
-                                      url: "products?limit=10",
-                                      method: .GET)
-        {[weak self] response in
-            switch response {
-            case .success(let result):
-                self?.sections.append(.topProducts(data: result.products))
-                completion(true)
-            default:
-                completion(false)
-            }
-        }
-    }
+//    func topProducts(sessionDelegate: URLSessionDelegate?, completion: @escaping (Bool) -> Void) {
+//        NetworkManager.shared.request(sessionDelegate: sessionDelegate,
+//                                      requestBody: nil,
+//                                      type: ProductsResponse.self,
+//                                      url: "products?limit=10",
+//                                      method: .GET)
+//        {[weak self] response in
+//            switch response {
+//            case .success(let result):
+//                self?.sections.append(.topProducts(data: result.products))
+//                completion(true)
+//            default:
+//                completion(false)
+//            }
+//        }
+//    }
     
-    func categories(sessionDelegate: URLSessionDelegate?, completion: @escaping (Bool) -> Void) {
+    func categories(sessionDelegate: URLSessionDelegate?, completion: @escaping ([String]?) -> Void) {
         NetworkManager.shared.request(sessionDelegate: sessionDelegate,
                                       requestBody: nil,
                                       type: [String].self,
                                       url: "products/categories",
                                       method: .GET)
-        {[weak self] response in
+        { response in
             switch response {
             case .success(let result):
-                self?.sections.append(.categories(data: result))
-                completion(true)
+                completion(result)
             default:
-                completion(false)
+                completion(nil)
             }
         }
     }
     
-    func latestProducts(sessionDelegate: URLSessionDelegate?, completion: @escaping (Bool) -> Void) {
+    func latestProducts(sessionDelegate: URLSessionDelegate?, completion: @escaping ([Product]?) -> Void) {
         NetworkManager.shared.request(sessionDelegate: sessionDelegate,
                                       requestBody: nil,
                                       type: ProductsResponse.self,
                                       url: "products?limit=40&skip=10",
                                       method: .GET)
-        {[weak self] response in
+        { response in
             switch response {
             case .success(let result):
-                self?.sections.append(.latestProducts(data: result.products))
-                completion(true)
+                completion(result.products)
             default:
-                completion(false)
+                completion(nil)
             }
         }
     }
     
 }
-

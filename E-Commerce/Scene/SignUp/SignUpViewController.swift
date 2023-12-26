@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
     
     private let passwordError = ErrorLabel()
     
-    private let spinner = Spinner()
+    private let spinner = Spinner(color: .white)
     
     private let toggleButton: UIButton = {
         let button = UIButton(type: .custom)

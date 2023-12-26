@@ -120,7 +120,6 @@ class UserLabel: UILabel {
 class Spinner: UIActivityIndicatorView {
     init() {
         super.init(frame: .zero)
-        self.color = .white
         self.hidesWhenStopped = true
     }
     
