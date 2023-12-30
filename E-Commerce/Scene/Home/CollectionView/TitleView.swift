@@ -13,14 +13,14 @@ class TitleView: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 0.108, green: 0.105, blue: 0.105, alpha: 1)
-        label.font = .systemFont(ofSize: 23, weight: .bold)
+        label.font = UIFont(name: "PlusJakartaSans-Bold", size: 18)
         label.numberOfLines = 1
         return label
     }()
     
     private let seeAllBtn: CyanButton = {
         let btn = CyanButton(title: "SEE ALL")
-        btn.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
+        btn.titleLabel?.font = UIFont(name: "PlusJakartaSans-SemiBold", size: 10)
         return btn
     }()
     

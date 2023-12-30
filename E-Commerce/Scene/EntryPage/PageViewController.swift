@@ -47,7 +47,7 @@ class PageViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = UIFont(name: "PlusJakartaSans-Bold", size: 24)
         label.textAlignment = .center
         return label
     }()
@@ -57,6 +57,7 @@ class PageViewController: UIViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = UIColor(red: 0.44, green: 0.45, blue: 0.52, alpha: 1)
+        label.font = UIFont(name: "PlusJakartaSans-Regular", size: 14)
         return label
     }()
     
@@ -70,6 +71,7 @@ class PageViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 12
         button.clipsToBounds = true
+        button.titleLabel?.font = UIFont(name: "PlusJakartaSans-SemiBold", size: 14)
         return button
     }()
     

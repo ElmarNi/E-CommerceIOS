@@ -46,9 +46,9 @@ class HomeViewController: UIViewController {
         collectionView.dataSource = self
         spinner.startAnimating()
         
-        //        UserDefaults.standard.setValue(nil, forKey: "token")
-        //        UserDefaults.standard.setValue(nil, forKey: "userID")
-        //        UserDefaults.standard.setValue(nil, forKey: "isLaunched")
+//                UserDefaults.standard.setValue(nil, forKey: "token")
+//                UserDefaults.standard.setValue(nil, forKey: "userID")
+//                UserDefaults.standard.setValue(nil, forKey: "isLaunched")
     }
     
     private static func configureCollectionViewLayout(sectionIndex: Int) -> NSCollectionLayoutSection {
@@ -163,7 +163,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectioX5nView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch viewModel.sections[indexPath.section] {
         case let .categories(categories):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell()

@@ -44,22 +44,21 @@ final class HomeViewModel {
         }
     }
     
-//    func topProducts(sessionDelegate: URLSessionDelegate?, completion: @escaping (Bool) -> Void) {
-//        NetworkManager.shared.request(sessionDelegate: sessionDelegate,
-//                                      requestBody: nil,
-//                                      type: ProductsResponse.self,
-//                                      url: "products?limit=10",
-//                                      method: .GET)
-//        {[weak self] response in
-//            switch response {
-//            case .success(let result):
-//                self?.sections.append(.topProducts(data: result.products))
-//                completion(true)
-//            default:
-//                completion(false)
-//            }
-//        }
-//    }
+    func topProducts(sessionDelegate: URLSessionDelegate?, completion: @escaping ([Product]?) -> Void) {
+        NetworkManager.shared.request(sessionDelegate: sessionDelegate,
+                                      requestBody: nil,
+                                      type: ProductsResponse.self,
+                                      url: "products?limit=5",
+                                      method: .GET)
+        { response in
+            switch response {
+            case .success(let result):
+                completion(result.products)
+            default:
+                completion(nil)
+            }
+        }
+    }
     
     func categories(sessionDelegate: URLSessionDelegate?, completion: @escaping ([String]?) -> Void) {
         NetworkManager.shared.request(sessionDelegate: sessionDelegate,

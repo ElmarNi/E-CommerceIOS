@@ -20,7 +20,7 @@ class SignUpViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = UIFont(name: "PlusJakartaSans-Bold", size: 24)
         label.text = "Signup"
         label.numberOfLines = 1
         return label
@@ -30,6 +30,7 @@ class SignUpViewController: UIViewController {
         let label = UILabel()
         label.text = "Already have an account?"
         label.numberOfLines = 1
+        label.font = UIFont(name: "PlusJakartaSans-Regular", size: 14)
         label.textColor = UIColor(red: 0.44, green: 0.45, blue: 0.52, alpha: 1)
         return label
     }()

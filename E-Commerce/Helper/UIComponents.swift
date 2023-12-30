@@ -45,6 +45,7 @@ class PaddedTextField: UITextField {
         self.layer.cornerRadius = 12
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1).cgColor
+        self.font = UIFont(name: "PlusJakartaSans-Regular", size: 12)
     }
 }
 
@@ -71,6 +72,7 @@ class RoundedBlackButton: UIButton {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
+        self.titleLabel?.font = UIFont(name: "PlusJakartaSans-SemiBold", size: 14)
     }
     
     required init?(coder: NSCoder) {
@@ -83,6 +85,7 @@ class CyanButton: UIButton {
         super.init(frame: .zero)
         self.setTitle(title, for: .normal)
         self.setTitleColor(UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1), for: .normal)
+        self.titleLabel?.font = UIFont(name: "PlusJakartaSans-Medium", size: 14)
     }
     
     required init?(coder: NSCoder) {
@@ -93,7 +96,7 @@ class CyanButton: UIButton {
 class ErrorLabel: UILabel {
     init() {
         super.init(frame: .zero)
-        self.font = .systemFont(ofSize: 12, weight: .bold)
+        self.font = UIFont(name: "PlusJakartaSans-SemiBold", size: 12)
         self.textColor = .red
         self.isHidden = true
     }
@@ -110,6 +113,7 @@ class UserLabel: UILabel {
         fullString.append(redString)
         self.attributedText = fullString
         self.numberOfLines = 1
+        self.font = UIFont(name: "PlusJakartaSans-Medium", size: 14)
     }
     
     required init?(coder: NSCoder) {
