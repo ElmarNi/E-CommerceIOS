@@ -23,6 +23,8 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>https://robohash.org/</key>
+			<string></string>
 			<key>https://dummyjson.com/</key>
 			<string></string>
 		</dict>

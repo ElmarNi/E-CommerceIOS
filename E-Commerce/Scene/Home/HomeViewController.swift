@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
                     }
             )
         )
+        collectionView.register(TopProductCollectionViewCell.self, forCellWithReuseIdentifier: TopProductCollectionViewCell.identifier)
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
         collectionView.register(TitleView.self, forSupplementaryViewOfKind: "TitleView", withReuseIdentifier: TitleView.identifier)
@@ -39,33 +40,45 @@ class HomeViewController: UIViewController {
         
         view.addSubview(collectionView)
         view.addSubview(spinner)
+        
         userImage()
         setupUI()
         setupUIWithDatas()
         collectionView.delegate = self
         collectionView.dataSource = self
         spinner.startAnimating()
-        
-//                UserDefaults.standard.setValue(nil, forKey: "token")
-//                UserDefaults.standard.setValue(nil, forKey: "userID")
-//                UserDefaults.standard.setValue(nil, forKey: "isLaunched")
+//        
+//        UserDefaults.standard.setValue(nil, forKey: "token")
+//        UserDefaults.standard.setValue(nil, forKey: "userID")
+//        UserDefaults.standard.setValue(nil, forKey: "isLaunched")
     }
     
     private static func configureCollectionViewLayout(sectionIndex: Int) -> NSCollectionLayoutSection {
         var itemWidth: CGFloat = 1/3
         var groupHeiht: CGFloat = 60
-        var scrollType = UICollectionLayoutSectionOrthogonalScrollingBehavior.continuous
+        var scrollType = UICollectionLayoutSectionOrthogonalScrollingBehavior.none
         
-        if sectionIndex == 1 {
+        switch sectionIndex {
+        case 0:
+            itemWidth = 1
+            groupHeiht = 148
+        case 1:
+            scrollType = .continuous
+        case 2:
             itemWidth = 1/2
             groupHeiht = 227
-            scrollType = .none
+        default: break
         }
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(itemWidth),
                                                                              heightDimension: .fractionalHeight(1)))
         
-        item.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4)
+        if sectionIndex != 0 {
+            item.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4)
+        }
+        else {
+            item.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0)
+        }
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                                                           heightDimension: .absolute(groupHeiht)),
@@ -73,16 +86,17 @@ class HomeViewController: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = scrollType
-        
-        let titleView = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .absolute(40)),
-            elementKind: "TitleView",
-            alignment: .top)
-        
-        titleView.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
-        
-        section.boundarySupplementaryItems = [titleView]
+        if sectionIndex != 0 {
+            let titleView = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                   heightDimension: .absolute(40)),
+                elementKind: "TitleView",
+                alignment: .top)
+            
+            titleView.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
+            
+            section.boundarySupplementaryItems = [titleView]
+        }
         return section
     }
     
@@ -105,14 +119,18 @@ class HomeViewController: UIViewController {
     private func setupUIWithDatas() {
         let group = DispatchGroup()
         var categories = [String]()
-        var products = [Product]()
-        //        group.enter()
+        var latestProducts = [Product]()
+        var topProducts = [Product]()
+        group.enter()
         group.enter()
         group.enter()
         
-        //        self.viewModel.topProducts(sessionDelegate: self) { success in
-        //            group.leave()
-        //        }
+        self.viewModel.topProducts(sessionDelegate: self) { result in
+            if let result = result {
+                topProducts = result
+            }
+            group.leave()
+        }
         
         self.viewModel.categories(sessionDelegate: self) { result in
             if let result = result {
@@ -123,27 +141,28 @@ class HomeViewController: UIViewController {
         
         self.viewModel.latestProducts(sessionDelegate: self) { result in
             if let result = result {
-                products = result
+                latestProducts = result
             }
             group.leave()
         }
         
         group.notify(queue: .main) { [weak self] in
+            self?.viewModel.sections.append(.topProducts(data: topProducts))
             self?.viewModel.sections.append(.categories(data: categories))
-            self?.viewModel.sections.append(.latestProducts(data: products))
+            self?.viewModel.sections.append(.latestProducts(data: latestProducts))
             self?.collectionView.reloadData()
             self?.spinner.stopAnimating()
         }
     }
     
     private func setupUI() {
+        spinner.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         collectionView.snp.makeConstraints { make in
             make.top.height.equalToSuperview()
             make.left.equalToSuperview().offset(12)
             make.width.equalToSuperview().inset(12)
-        }
-        spinner.snp.makeConstraints { make in
-            make.center.equalToSuperview()
         }
     }
 }
@@ -156,6 +175,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch viewModel.sections[section] {
+        case .topProducts(data: _):
+            return 1
         case .categories(let categories):
             return categories.count
         case .latestProducts(let products):
@@ -165,6 +186,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectioX5nView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch viewModel.sections[indexPath.section] {
+        case let .topProducts(products):
+            guard let cell = collectioX5nView.dequeueReusableCell(withReuseIdentifier: TopProductCollectionViewCell.identifier, for: indexPath) as? TopProductCollectionViewCell else { return UICollectionViewCell() }
+            cell.configure(products)
+            return cell
         case let .categories(categories):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell()
             }

@@ -1,5 +1,5 @@
 //
-//  PageViewController.swift
+//  EntryPageViewController.swift
 //  E-Commerce
 //
 //  Created by Elmar Ibrahimli on 05.12.23.
@@ -7,17 +7,14 @@
 
 import UIKit
 
-protocol PageViewControllerDelegate: AnyObject {
+protocol EntryPageViewControllerDelegate: AnyObject {
     func nextButtonTapped(index: Int) -> Void
 }
 
-class PageViewController: UIViewController {
+class EntryPageViewController: UIViewController {
     
-    weak var delegate: PageViewControllerDelegate?
-    private let titles = ["Explore a wide range of products", "Unlock exclusive offers and discounts", "Safe and secure payments"]
-    private let descriptions = ["Explore a wide range of products at your fingertips. QuickMart offers an extensive collection to suit your needs.",
-                                "Get access to limited-time deals and special promotions available only to our valued customers.",
-                                "QuickMart employs industry-leading encryption and trusted payment gateways to safeguard your financial information."]
+    weak var delegate: EntryPageViewControllerDelegate?
+    private let data = [EntryPage]()
     
     private let mainFrame = UIView()
     
@@ -172,14 +169,14 @@ class PageViewController: UIViewController {
         }
     }
     
-    func configure(index: Int) {
-        iconImageView.image = UIImage(named: "entry\(index+1)")
-        titleLabel.text = titles[index]
-        descriptionLabel.text = descriptions[index]
+    func configure(data: EntryPage, index: Int) {
+        iconImageView.image = UIImage(named: data.imageName)
+        titleLabel.text = data.title
+        descriptionLabel.text = data.description
+        nextButton.isHidden = data.isLogin
+        loginButton.isHidden = !data.isLogin
+        getStartedButton.isHidden = !data.isLogin
         nextButton.tag = index
-        nextButton.isHidden = index == 2
-        loginButton.isHidden = index != 2
-        getStartedButton.isHidden = index != 2
     }
 
 }

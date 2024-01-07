@@ -11,12 +11,15 @@ final class HomeViewModel {
     enum Section {
         case categories(data: [String])
         case latestProducts(data: [Product])
+        case topProducts(data: [Product])
         var title: String {
             switch self {
             case .categories:
                 return "Categories"
             case .latestProducts:
                 return "Latest Products"
+            default:
+                return ""
             }
         }
     }
@@ -80,7 +83,7 @@ final class HomeViewModel {
         NetworkManager.shared.request(sessionDelegate: sessionDelegate,
                                       requestBody: nil,
                                       type: ProductsResponse.self,
-                                      url: "products?limit=40&skip=10",
+                                      url: "products?limit=40&skip=5",
                                       method: .GET)
         { response in
             switch response {
