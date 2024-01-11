@@ -12,11 +12,12 @@ class PageRootViewController: UIPageViewController {
     private var pages: [UIViewController] = [UIViewController]()
     private var count = 0
     private var currentIndex = 0
-    private var fromHome = false
-    init() {
+    
+    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) 
+    {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -25,25 +26,6 @@ class PageRootViewController: UIPageViewController {
         super.viewDidLoad()
         dataSource = self
         delegate = self
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if fromHome {
-            for subView in view.subviews {
-                if subView is UIPageControl {
-                    view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: subView.frame.height + view.frame.height)
-                    subView.frame = CGRect(x: view.frame.origin.x + 4,
-                                           y: view.frame.height - (subView.frame.height * 3),
-                                           width: subView.frame.width,
-                                           height: subView.frame.height)
-                    subView.layer.cornerRadius = 12
-                    subView.clipsToBounds = true
-                    subView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1)
-                }
-            }
-            
-        }
     }
     
     func configureEntryPage(_ data: [EntryPage]) {
@@ -57,16 +39,18 @@ class PageRootViewController: UIPageViewController {
         configurePages()
     }
     
-    func configureHomePage(_ data: [Product]) {
-        for i in 0..<data.count {
-            let pageViewController = HomePageViewController()
-            pageViewController.configure(product: data[i])
-            pages.append(pageViewController)
-        }
-        count = data.count
-        configurePages()
-        fromHome = true
-    }
+//    func configureHomePage(_ data: [Product]) {
+//        for i in 0..<data.count {
+//            let pageViewController = HomePageViewController(indicatorCount: data.count)
+//            pageViewController.configure(product: data[i])
+//            pageViewController.configureIndicators(count: data.count, currentIndex: i)
+//            pages.append(pageViewController)
+//        }
+//        count = 0
+//        configurePages()
+//        fromHome = true
+//        self.currentIndex = 2
+//    }
     
     private func configurePages() {
         guard pages.count > 0 else { return }

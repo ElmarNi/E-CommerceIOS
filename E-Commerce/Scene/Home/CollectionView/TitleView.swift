@@ -38,6 +38,11 @@ class TitleView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+    }
+    
     @objc private func seeAllBtnTapped(_ sender: UIButton) {
         onAction()
     }

@@ -95,4 +95,57 @@ final class HomeViewModel {
         }
     }
     
+    func getCollectionViewData(sessionDelegate: URLSessionDelegate?, completion: @escaping () -> Void) {
+        let group = DispatchGroup()
+        var categories = [String]()
+        var latestProducts = [Product]()
+        var topProducts = [Product]()
+        group.enter()
+        group.enter()
+        group.enter()
+        
+        self.topProducts(sessionDelegate: sessionDelegate) { result in
+            if let result = result {
+                topProducts = result
+            }
+            group.leave()
+        }
+        
+        self.categories(sessionDelegate: sessionDelegate) { result in
+            if let result = result {
+                categories = result
+            }
+            group.leave()
+        }
+        
+        self.latestProducts(sessionDelegate: sessionDelegate) { result in
+            if let result = result {
+                latestProducts = result
+            }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            self?.sections.append(.topProducts(data: topProducts))
+            self?.sections.append(.categories(data: categories))
+            self?.sections.append(.latestProducts(data: latestProducts))
+            completion()
+        }
+    }
+    
+    func numberOfSections() -> Int {
+        return sections.count
+    }
+    
+    func numberOfItemsInSection(section: Int) -> Int {
+        switch sections[section] {
+        case .topProducts(let products):
+            return products.count
+        case .categories(let categories):
+            return categories.count
+        case .latestProducts(let products):
+            return products.count
+        }
+    }
+    
 }

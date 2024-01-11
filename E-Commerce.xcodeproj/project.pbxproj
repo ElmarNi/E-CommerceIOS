@@ -8,27 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A495C50EB9E7D3239DD7507D /* Pods_E_Commerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B158A9401B22BC44047F4C73 /* Pods_E_Commerce.framework */; };
+		EB01984E2B4BE0EE00E17F6A /* UIStackView+Curved.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01984D2B4BE0EE00E17F6A /* UIStackView+Curved.swift */; };
 		EB04FD882B3AA36400E8D4AC /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04FD872B3AA36400E8D4AC /* TitleView.swift */; };
 		EB04FD8A2B3AD73700E8D4AC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04FD892B3AD73700E8D4AC /* CategoryCollectionViewCell.swift */; };
 		EB04FD8C2B3AE02200E8D4AC /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04FD8B2B3AE02200E8D4AC /* ProductCollectionViewCell.swift */; };
 		EB04FD8E2B3B07D800E8D4AC /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04FD8D2B3B07D800E8D4AC /* SessionDelegate.swift */; };
 		EB13DA642B35A0B60039541F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB13DA632B35A0B60039541F /* HomeViewModel.swift */; };
 		EB1858372B4A8D8100976E14 /* TopProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1858362B4A8D8100976E14 /* TopProductCollectionViewCell.swift */; };
-		EB29B6D72B3D9D18006F1336 /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6C92B3D9D18006F1336 /* PlusJakartaSans-Bold.ttf */; };
-		EB29B6D82B3D9D18006F1336 /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6CA2B3D9D18006F1336 /* PlusJakartaSans-ExtraBold.ttf */; };
-		EB29B6D92B3D9D18006F1336 /* PlusJakartaSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6CB2B3D9D18006F1336 /* PlusJakartaSans-ExtraBoldItalic.ttf */; };
-		EB29B6DA2B3D9D18006F1336 /* PlusJakartaSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6CC2B3D9D18006F1336 /* PlusJakartaSans-MediumItalic.ttf */; };
-		EB29B6DB2B3D9D18006F1336 /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6CD2B3D9D18006F1336 /* PlusJakartaSans-Light.ttf */; };
-		EB29B6DC2B3D9D18006F1336 /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6CE2B3D9D18006F1336 /* PlusJakartaSans-SemiBold.ttf */; };
-		EB29B6DD2B3D9D18006F1336 /* PlusJakartaSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6CF2B3D9D18006F1336 /* PlusJakartaSans-Italic.ttf */; };
-		EB29B6DE2B3D9D18006F1336 /* PlusJakartaSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6D02B3D9D18006F1336 /* PlusJakartaSans-LightItalic.ttf */; };
-		EB29B6DF2B3D9D18006F1336 /* PlusJakartaSans-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6D12B3D9D18006F1336 /* PlusJakartaSans-ExtraLightItalic.ttf */; };
-		EB29B6E02B3D9D18006F1336 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6D22B3D9D18006F1336 /* PlusJakartaSans-Regular.ttf */; };
-		EB29B6E12B3D9D18006F1336 /* PlusJakartaSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6D32B3D9D18006F1336 /* PlusJakartaSans-BoldItalic.ttf */; };
-		EB29B6E22B3D9D18006F1336 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6D42B3D9D18006F1336 /* PlusJakartaSans-Medium.ttf */; };
-		EB29B6E32B3D9D18006F1336 /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6D52B3D9D18006F1336 /* PlusJakartaSans-ExtraLight.ttf */; };
-		EB29B6E42B3D9D18006F1336 /* PlusJakartaSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB29B6D62B3D9D18006F1336 /* PlusJakartaSans-SemiBoldItalic.ttf */; };
-		EB3E25A62B40717500B6AF49 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E25A52B40717500B6AF49 /* HomePageViewController.swift */; };
 		EB3E25A82B40728100B6AF49 /* EntryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E25A72B40728100B6AF49 /* EntryPage.swift */; };
 		EB4DC9AC2B361B4500005385 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4DC9AB2B361B4500005385 /* Login.swift */; };
 		EB60FC8C2B1A17C0004DF45F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60FC8B2B1A17C0004DF45F /* AppDelegate.swift */; };
@@ -46,12 +32,29 @@
 		EB74E1422B359F1D0097CD7B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E1412B359F1D0097CD7B /* SignUp.swift */; };
 		EB80A0F82B1E787C009EDF41 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80A0F72B1E787C009EDF41 /* EntryPageViewController.swift */; };
 		EB80A0FA2B1E788B009EDF41 /* PageRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80A0F92B1E788B009EDF41 /* PageRootViewController.swift */; };
+		EB8C2C7E2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C2C7D2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift */; };
+		EB8C2C8D2B500704001EDDF2 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C7F2B500703001EDDF2 /* PlusJakartaSans-Regular.ttf */; };
+		EB8C2C8E2B500704001EDDF2 /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C802B500703001EDDF2 /* PlusJakartaSans-ExtraBold.ttf */; };
+		EB8C2C8F2B500704001EDDF2 /* PlusJakartaSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C812B500703001EDDF2 /* PlusJakartaSans-BoldItalic.ttf */; };
+		EB8C2C902B500704001EDDF2 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C822B500703001EDDF2 /* PlusJakartaSans-Medium.ttf */; };
+		EB8C2C912B500704001EDDF2 /* PlusJakartaSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C832B500703001EDDF2 /* PlusJakartaSans-Italic.ttf */; };
+		EB8C2C922B500704001EDDF2 /* PlusJakartaSans-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C842B500703001EDDF2 /* PlusJakartaSans-ExtraLightItalic.ttf */; };
+		EB8C2C932B500704001EDDF2 /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C852B500703001EDDF2 /* PlusJakartaSans-ExtraLight.ttf */; };
+		EB8C2C942B500704001EDDF2 /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C862B500703001EDDF2 /* PlusJakartaSans-SemiBold.ttf */; };
+		EB8C2C952B500704001EDDF2 /* PlusJakartaSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C872B500703001EDDF2 /* PlusJakartaSans-SemiBoldItalic.ttf */; };
+		EB8C2C962B500704001EDDF2 /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C882B500703001EDDF2 /* PlusJakartaSans-Bold.ttf */; };
+		EB8C2C972B500704001EDDF2 /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C892B500703001EDDF2 /* PlusJakartaSans-Light.ttf */; };
+		EB8C2C982B500704001EDDF2 /* PlusJakartaSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C8A2B500704001EDDF2 /* PlusJakartaSans-ExtraBoldItalic.ttf */; };
+		EB8C2C992B500704001EDDF2 /* PlusJakartaSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C8B2B500704001EDDF2 /* PlusJakartaSans-LightItalic.ttf */; };
+		EB8C2C9A2B500704001EDDF2 /* PlusJakartaSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C8C2B500704001EDDF2 /* PlusJakartaSans-MediumItalic.ttf */; };
 		EB9A58272B21EE1100FE585A /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A58262B21EE1100FE585A /* CategoriesViewController.swift */; };
 		EB9A58292B21F05800FE585A /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A58282B21F05800FE585A /* CartViewController.swift */; };
 		EB9A582B2B21F0DD00FE585A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A582A2B21F0DD00FE585A /* ProfileViewController.swift */; };
 		EBAC61AE2B1F5B7700F18D31 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAC61AD2B1F5B7700F18D31 /* LoginViewController.swift */; };
 		EBAC61B02B1F5C8C00F18D31 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAC61AF2B1F5C8C00F18D31 /* SignUpViewController.swift */; };
 		EBAC61B32B1F5D1C00F18D31 /* LogoTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAC61B22B1F5D1C00F18D31 /* LogoTitleView.swift */; };
+		EBB094112B4EB17C00CA75C7 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB094102B4EB17C00CA75C7 /* CategoriesViewModel.swift */; };
+		EBB094132B4EBA8800CA75C7 /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB094122B4EBA8800CA75C7 /* HomeViewController+CollectionView.swift */; };
 		EBB8FF692B1DA69E0001AFF9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF682B1DA69E0001AFF9 /* TabBarController.swift */; };
 		EBB8FF6B2B1DA6B70001AFF9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF6A2B1DA6B70001AFF9 /* HomeViewController.swift */; };
 		EBB8FF6F2B1DB8DC0001AFF9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */; };
@@ -64,27 +67,13 @@
 		12A726D52354D2FBAD3F9094 /* Pods-E-Commerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-Commerce.debug.xcconfig"; path = "Target Support Files/Pods-E-Commerce/Pods-E-Commerce.debug.xcconfig"; sourceTree = "<group>"; };
 		68E0B96E685D85BC0DE01699 /* Pods-E-Commerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-Commerce.release.xcconfig"; path = "Target Support Files/Pods-E-Commerce/Pods-E-Commerce.release.xcconfig"; sourceTree = "<group>"; };
 		B158A9401B22BC44047F4C73 /* Pods_E_Commerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_Commerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB01984D2B4BE0EE00E17F6A /* UIStackView+Curved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Curved.swift"; sourceTree = "<group>"; };
 		EB04FD872B3AA36400E8D4AC /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		EB04FD892B3AD73700E8D4AC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB04FD8B2B3AE02200E8D4AC /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB04FD8D2B3B07D800E8D4AC /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		EB13DA632B35A0B60039541F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EB1858362B4A8D8100976E14 /* TopProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProductCollectionViewCell.swift; sourceTree = "<group>"; };
-		EB29B6C92B3D9D18006F1336 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-Bold.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
-		EB29B6CA2B3D9D18006F1336 /* PlusJakartaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-ExtraBold.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		EB29B6CB2B3D9D18006F1336 /* PlusJakartaSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-ExtraBoldItalic.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		EB29B6CC2B3D9D18006F1336 /* PlusJakartaSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-MediumItalic.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-MediumItalic.ttf"; sourceTree = "<group>"; };
-		EB29B6CD2B3D9D18006F1336 /* PlusJakartaSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-Light.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-Light.ttf"; sourceTree = "<group>"; };
-		EB29B6CE2B3D9D18006F1336 /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-SemiBold.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		EB29B6CF2B3D9D18006F1336 /* PlusJakartaSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-Italic.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-Italic.ttf"; sourceTree = "<group>"; };
-		EB29B6D02B3D9D18006F1336 /* PlusJakartaSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-LightItalic.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		EB29B6D12B3D9D18006F1336 /* PlusJakartaSans-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-ExtraLightItalic.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		EB29B6D22B3D9D18006F1336 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-Regular.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
-		EB29B6D32B3D9D18006F1336 /* PlusJakartaSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-BoldItalic.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-BoldItalic.ttf"; sourceTree = "<group>"; };
-		EB29B6D42B3D9D18006F1336 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-Medium.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
-		EB29B6D52B3D9D18006F1336 /* PlusJakartaSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-ExtraLight.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraLight.ttf"; sourceTree = "<group>"; };
-		EB29B6D62B3D9D18006F1336 /* PlusJakartaSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlusJakartaSans-SemiBoldItalic.ttf"; path = "../../../../../Plus_Jakarta_Sans/static/PlusJakartaSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		EB3E25A52B40717500B6AF49 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		EB3E25A72B40728100B6AF49 /* EntryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPage.swift; sourceTree = "<group>"; };
 		EB4DC9AB2B361B4500005385 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		EB60FC882B1A17C0004DF45F /* E-Commerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Commerce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,12 +93,29 @@
 		EB74E1412B359F1D0097CD7B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		EB80A0F72B1E787C009EDF41 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
 		EB80A0F92B1E788B009EDF41 /* PageRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageRootViewController.swift; sourceTree = "<group>"; };
+		EB8C2C7D2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		EB8C2C7F2B500703001EDDF2 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
+		EB8C2C802B500703001EDDF2 /* PlusJakartaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		EB8C2C812B500703001EDDF2 /* PlusJakartaSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		EB8C2C822B500703001EDDF2 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
+		EB8C2C832B500703001EDDF2 /* PlusJakartaSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Italic.ttf"; sourceTree = "<group>"; };
+		EB8C2C842B500703001EDDF2 /* PlusJakartaSans-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		EB8C2C852B500703001EDDF2 /* PlusJakartaSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		EB8C2C862B500703001EDDF2 /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		EB8C2C872B500703001EDDF2 /* PlusJakartaSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		EB8C2C882B500703001EDDF2 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
+		EB8C2C892B500703001EDDF2 /* PlusJakartaSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Light.ttf"; sourceTree = "<group>"; };
+		EB8C2C8A2B500704001EDDF2 /* PlusJakartaSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		EB8C2C8B2B500704001EDDF2 /* PlusJakartaSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		EB8C2C8C2B500704001EDDF2 /* PlusJakartaSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EB9A58262B21EE1100FE585A /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EB9A58282B21F05800FE585A /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		EB9A582A2B21F0DD00FE585A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EBAC61AD2B1F5B7700F18D31 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EBAC61AF2B1F5C8C00F18D31 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBAC61B22B1F5D1C00F18D31 /* LogoTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoTitleView.swift; sourceTree = "<group>"; };
+		EBB094102B4EB17C00CA75C7 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		EBB094122B4EBA8800CA75C7 /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		EBB8FF682B1DA69E0001AFF9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EBB8FF6A2B1DA6B70001AFF9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				EB04FD872B3AA36400E8D4AC /* TitleView.swift */,
-				EB04FD892B3AD73700E8D4AC /* CategoryCollectionViewCell.swift */,
 				EB04FD8B2B3AE02200E8D4AC /* ProductCollectionViewCell.swift */,
 				EB1858362B4A8D8100976E14 /* TopProductCollectionViewCell.swift */,
 			);
@@ -165,6 +170,7 @@
 				EBBF8E2A2B28498D00CD3480 /* HomeTitleView.swift */,
 				EB13DA632B35A0B60039541F /* HomeViewModel.swift */,
 				EBB8FF6A2B1DA6B70001AFF9 /* HomeViewController.swift */,
+				EBB094122B4EBA8800CA75C7 /* HomeViewController+CollectionView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -172,7 +178,10 @@
 		EB13DA652B35A1040039541F /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				EBB094102B4EB17C00CA75C7 /* CategoriesViewModel.swift */,
+				EB04FD892B3AD73700E8D4AC /* CategoryCollectionViewCell.swift */,
 				EB9A58262B21EE1100FE585A /* CategoriesViewController.swift */,
+				EB8C2C7D2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -204,20 +213,20 @@
 		EB29B6C82B3D9CEC006F1336 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				EB29B6C92B3D9D18006F1336 /* PlusJakartaSans-Bold.ttf */,
-				EB29B6D32B3D9D18006F1336 /* PlusJakartaSans-BoldItalic.ttf */,
-				EB29B6CA2B3D9D18006F1336 /* PlusJakartaSans-ExtraBold.ttf */,
-				EB29B6CB2B3D9D18006F1336 /* PlusJakartaSans-ExtraBoldItalic.ttf */,
-				EB29B6D52B3D9D18006F1336 /* PlusJakartaSans-ExtraLight.ttf */,
-				EB29B6D12B3D9D18006F1336 /* PlusJakartaSans-ExtraLightItalic.ttf */,
-				EB29B6CF2B3D9D18006F1336 /* PlusJakartaSans-Italic.ttf */,
-				EB29B6CD2B3D9D18006F1336 /* PlusJakartaSans-Light.ttf */,
-				EB29B6D02B3D9D18006F1336 /* PlusJakartaSans-LightItalic.ttf */,
-				EB29B6D42B3D9D18006F1336 /* PlusJakartaSans-Medium.ttf */,
-				EB29B6CC2B3D9D18006F1336 /* PlusJakartaSans-MediumItalic.ttf */,
-				EB29B6D22B3D9D18006F1336 /* PlusJakartaSans-Regular.ttf */,
-				EB29B6CE2B3D9D18006F1336 /* PlusJakartaSans-SemiBold.ttf */,
-				EB29B6D62B3D9D18006F1336 /* PlusJakartaSans-SemiBoldItalic.ttf */,
+				EB8C2C882B500703001EDDF2 /* PlusJakartaSans-Bold.ttf */,
+				EB8C2C812B500703001EDDF2 /* PlusJakartaSans-BoldItalic.ttf */,
+				EB8C2C802B500703001EDDF2 /* PlusJakartaSans-ExtraBold.ttf */,
+				EB8C2C8A2B500704001EDDF2 /* PlusJakartaSans-ExtraBoldItalic.ttf */,
+				EB8C2C852B500703001EDDF2 /* PlusJakartaSans-ExtraLight.ttf */,
+				EB8C2C842B500703001EDDF2 /* PlusJakartaSans-ExtraLightItalic.ttf */,
+				EB8C2C832B500703001EDDF2 /* PlusJakartaSans-Italic.ttf */,
+				EB8C2C892B500703001EDDF2 /* PlusJakartaSans-Light.ttf */,
+				EB8C2C8B2B500704001EDDF2 /* PlusJakartaSans-LightItalic.ttf */,
+				EB8C2C822B500703001EDDF2 /* PlusJakartaSans-Medium.ttf */,
+				EB8C2C8C2B500704001EDDF2 /* PlusJakartaSans-MediumItalic.ttf */,
+				EB8C2C7F2B500703001EDDF2 /* PlusJakartaSans-Regular.ttf */,
+				EB8C2C862B500703001EDDF2 /* PlusJakartaSans-SemiBold.ttf */,
+				EB8C2C872B500703001EDDF2 /* PlusJakartaSans-SemiBoldItalic.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -226,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				EB80A0F92B1E788B009EDF41 /* PageRootViewController.swift */,
-				EB3E25A52B40717500B6AF49 /* HomePageViewController.swift */,
 				EB80A0F72B1E787C009EDF41 /* EntryPageViewController.swift */,
 			);
 			path = PageController;
@@ -322,6 +330,7 @@
 				EB74E1262B356F210097CD7B /* UIViewController+showAlert.swift */,
 				EBEC7C772B20C42A00735E2F /* UIComponents.swift */,
 				EB04FD8D2B3B07D800E8D4AC /* SessionDelegate.swift */,
+				EB01984D2B4BE0EE00E17F6A /* UIStackView+Curved.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -419,22 +428,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB29B6DF2B3D9D18006F1336 /* PlusJakartaSans-ExtraLightItalic.ttf in Resources */,
-				EB29B6E02B3D9D18006F1336 /* PlusJakartaSans-Regular.ttf in Resources */,
-				EB29B6DD2B3D9D18006F1336 /* PlusJakartaSans-Italic.ttf in Resources */,
-				EB29B6E42B3D9D18006F1336 /* PlusJakartaSans-SemiBoldItalic.ttf in Resources */,
-				EB29B6E22B3D9D18006F1336 /* PlusJakartaSans-Medium.ttf in Resources */,
-				EB29B6DE2B3D9D18006F1336 /* PlusJakartaSans-LightItalic.ttf in Resources */,
-				EB29B6E12B3D9D18006F1336 /* PlusJakartaSans-BoldItalic.ttf in Resources */,
-				EB29B6D72B3D9D18006F1336 /* PlusJakartaSans-Bold.ttf in Resources */,
-				EB29B6E32B3D9D18006F1336 /* PlusJakartaSans-ExtraLight.ttf in Resources */,
+				EB8C2C982B500704001EDDF2 /* PlusJakartaSans-ExtraBoldItalic.ttf in Resources */,
 				EB60FC982B1A17C2004DF45F /* LaunchScreen.storyboard in Resources */,
-				EB29B6DB2B3D9D18006F1336 /* PlusJakartaSans-Light.ttf in Resources */,
-				EB29B6DC2B3D9D18006F1336 /* PlusJakartaSans-SemiBold.ttf in Resources */,
-				EB29B6DA2B3D9D18006F1336 /* PlusJakartaSans-MediumItalic.ttf in Resources */,
-				EB29B6D82B3D9D18006F1336 /* PlusJakartaSans-ExtraBold.ttf in Resources */,
-				EB29B6D92B3D9D18006F1336 /* PlusJakartaSans-ExtraBoldItalic.ttf in Resources */,
+				EB8C2C902B500704001EDDF2 /* PlusJakartaSans-Medium.ttf in Resources */,
+				EB8C2C8D2B500704001EDDF2 /* PlusJakartaSans-Regular.ttf in Resources */,
+				EB8C2C8E2B500704001EDDF2 /* PlusJakartaSans-ExtraBold.ttf in Resources */,
 				EB60FC952B1A17C2004DF45F /* Assets.xcassets in Resources */,
+				EB8C2C8F2B500704001EDDF2 /* PlusJakartaSans-BoldItalic.ttf in Resources */,
+				EB8C2C922B500704001EDDF2 /* PlusJakartaSans-ExtraLightItalic.ttf in Resources */,
+				EB8C2C942B500704001EDDF2 /* PlusJakartaSans-SemiBold.ttf in Resources */,
+				EB8C2C952B500704001EDDF2 /* PlusJakartaSans-SemiBoldItalic.ttf in Resources */,
+				EB8C2C972B500704001EDDF2 /* PlusJakartaSans-Light.ttf in Resources */,
+				EB8C2C992B500704001EDDF2 /* PlusJakartaSans-LightItalic.ttf in Resources */,
+				EB8C2C962B500704001EDDF2 /* PlusJakartaSans-Bold.ttf in Resources */,
+				EB8C2C932B500704001EDDF2 /* PlusJakartaSans-ExtraLight.ttf in Resources */,
+				EB8C2C9A2B500704001EDDF2 /* PlusJakartaSans-MediumItalic.ttf in Resources */,
+				EB8C2C912B500704001EDDF2 /* PlusJakartaSans-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +504,7 @@
 				EB74E1402B359EDC0097CD7B /* SignUpViewModel.swift in Sources */,
 				EBAC61B02B1F5C8C00F18D31 /* SignUpViewController.swift in Sources */,
 				EB80A0FA2B1E788B009EDF41 /* PageRootViewController.swift in Sources */,
+				EB8C2C7E2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift in Sources */,
 				EB4DC9AC2B361B4500005385 /* Login.swift in Sources */,
 				EBB8FF6B2B1DA6B70001AFF9 /* HomeViewController.swift in Sources */,
 				EBB8FF692B1DA69E0001AFF9 /* TabBarController.swift in Sources */,
@@ -505,6 +515,7 @@
 				EB04FD8E2B3B07D800E8D4AC /* SessionDelegate.swift in Sources */,
 				EB60FC8C2B1A17C0004DF45F /* AppDelegate.swift in Sources */,
 				EB04FD882B3AA36400E8D4AC /* TitleView.swift in Sources */,
+				EB01984E2B4BE0EE00E17F6A /* UIStackView+Curved.swift in Sources */,
 				EB3E25A82B40728100B6AF49 /* EntryPage.swift in Sources */,
 				EB04FD8A2B3AD73700E8D4AC /* CategoryCollectionViewCell.swift in Sources */,
 				EB66E73C2B35B8C9008D4AC3 /* ProductsResponse.swift in Sources */,
@@ -513,10 +524,11 @@
 				EB74E1422B359F1D0097CD7B /* SignUp.swift in Sources */,
 				EBAC61AE2B1F5B7700F18D31 /* LoginViewController.swift in Sources */,
 				EB66E73A2B35B321008D4AC3 /* Product.swift in Sources */,
+				EBB094112B4EB17C00CA75C7 /* CategoriesViewModel.swift in Sources */,
+				EBB094132B4EBA8800CA75C7 /* HomeViewController+CollectionView.swift in Sources */,
 				EB74E1252B356EE00097CD7B /* UIImageView+download.swift in Sources */,
 				EB13DA642B35A0B60039541F /* HomeViewModel.swift in Sources */,
 				EBB8FF6F2B1DB8DC0001AFF9 /* EntryViewController.swift in Sources */,
-				EB3E25A62B40717500B6AF49 /* HomePageViewController.swift in Sources */,
 				EB1858372B4A8D8100976E14 /* TopProductCollectionViewCell.swift in Sources */,
 				EB74E12C2B356F5F0097CD7B /* NetworkManager.swift in Sources */,
 				EB74E11C2B3561830097CD7B /* WishlistViewController.swift in Sources */,

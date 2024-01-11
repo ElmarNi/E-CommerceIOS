@@ -70,6 +70,15 @@ class ProductCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        coverImage.image = nil
+        titleLabel.text = nil
+        priceLabel.text = nil
+        ratingLabel.text = nil
+        wishlistButton.setImage(nil, for: .normal)
+    }
+    
     private func setupUI() {
         coverImage.snp.makeConstraints { make in
             make.left.width.top.equalToSuperview()
