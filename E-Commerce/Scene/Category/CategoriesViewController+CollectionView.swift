@@ -36,7 +36,13 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(category: viewModel.getCategory(index: indexPath.row))
-//        cell.configure(category: categories[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let category = viewModel.getCategory(index: indexPath.row)
+        let productsViewController = ProductsViewController(category: category)
+        productsViewController.title = category
+        navigationController?.pushViewController(productsViewController, animated: true)
     }
 }

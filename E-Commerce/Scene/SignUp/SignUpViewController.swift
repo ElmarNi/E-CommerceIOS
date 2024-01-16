@@ -72,7 +72,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.tintColor = .black
         navigationItem.titleView = LogoTitleView()
         
         mainFrame.addSubview(titleLabel)

@@ -24,7 +24,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             scrollType = .continuous
         case 2:
             itemWidth = 1/2
-            groupHeiht = 227
+            groupHeiht = 203
         default: break
         }
         
@@ -101,10 +101,29 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if kind == "TitleView",
            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TitleView.identifier, for: indexPath) as? TitleView
         {
+            switch viewModel.sections[indexPath.section] {
+            case .categories(_):
+                view.onAction = {
+                    self.navigationController?.tabBarController?.selectedIndex = 1
+                }
+            default:
+                break
+            }
             view.configure(title: viewModel.sections[indexPath.section].title, sectionIndex: indexPath.section)
             return view
         }
         return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch viewModel.sections[indexPath.section] {
+        case .topProducts(_): break
+        case let .categories(categories):
+            let productsViewController = ProductsViewController(category: categories[indexPath.row])
+            productsViewController.title = categories[indexPath.row]
+            navigationController?.pushViewController(productsViewController, animated: true)
+        case .latestProducts(_): break
+        }
     }
     
 }

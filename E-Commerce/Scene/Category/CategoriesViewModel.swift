@@ -11,7 +11,7 @@ final class CategoriesViewModel {
     private var categories = [String]()
     
     func categories(sessionDelegate: URLSessionDelegate?, completion: @escaping (_ isError: Bool, _ errorString: String?) -> Void) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async {[weak self] in
             NetworkManager.shared.request(sessionDelegate: sessionDelegate,
                                           requestBody: nil,
                                           type: [String].self,
@@ -20,10 +20,10 @@ final class CategoriesViewModel {
             { response in
                 switch response {
                 case .success(let result):
-                    self.categories = result
-                    completion(true, nil)
+                    self?.categories = result
+                    completion(false, nil)
                 default:
-                    completion(false, "Can't get categories")
+                    completion(true, "Can't get categories")
                 }
             }
         }

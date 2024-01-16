@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A495C50EB9E7D3239DD7507D /* Pods_E_Commerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B158A9401B22BC44047F4C73 /* Pods_E_Commerce.framework */; };
-		EB01984E2B4BE0EE00E17F6A /* UIStackView+Curved.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01984D2B4BE0EE00E17F6A /* UIStackView+Curved.swift */; };
 		EB04FD882B3AA36400E8D4AC /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04FD872B3AA36400E8D4AC /* TitleView.swift */; };
 		EB04FD8A2B3AD73700E8D4AC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04FD892B3AD73700E8D4AC /* CategoryCollectionViewCell.swift */; };
 		EB04FD8C2B3AE02200E8D4AC /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04FD8B2B3AE02200E8D4AC /* ProductCollectionViewCell.swift */; };
@@ -59,6 +58,9 @@
 		EBB8FF6B2B1DA6B70001AFF9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF6A2B1DA6B70001AFF9 /* HomeViewController.swift */; };
 		EBB8FF6F2B1DB8DC0001AFF9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */; };
 		EBBF8E2B2B28498E00CD3480 /* HomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBF8E2A2B28498D00CD3480 /* HomeTitleView.swift */; };
+		EBC033742B56843D009AE94E /* ProductsViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC033732B56843D009AE94E /* ProductsViewController+CollectionView.swift */; };
+		EBC49A3C2B5128B800395565 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC49A3B2B5128B800395565 /* ProductsViewController.swift */; };
+		EBC49A3E2B5128C800395565 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC49A3D2B5128C800395565 /* ProductsViewModel.swift */; };
 		EBDECDF02B233CB3007D9F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDECDEF2B233CB3007D9F1C /* User.swift */; };
 		EBEC7C782B20C42A00735E2F /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC7C772B20C42A00735E2F /* UIComponents.swift */; };
 /* End PBXBuildFile section */
@@ -67,7 +69,6 @@
 		12A726D52354D2FBAD3F9094 /* Pods-E-Commerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-Commerce.debug.xcconfig"; path = "Target Support Files/Pods-E-Commerce/Pods-E-Commerce.debug.xcconfig"; sourceTree = "<group>"; };
 		68E0B96E685D85BC0DE01699 /* Pods-E-Commerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-Commerce.release.xcconfig"; path = "Target Support Files/Pods-E-Commerce/Pods-E-Commerce.release.xcconfig"; sourceTree = "<group>"; };
 		B158A9401B22BC44047F4C73 /* Pods_E_Commerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_Commerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB01984D2B4BE0EE00E17F6A /* UIStackView+Curved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Curved.swift"; sourceTree = "<group>"; };
 		EB04FD872B3AA36400E8D4AC /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		EB04FD892B3AD73700E8D4AC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB04FD8B2B3AE02200E8D4AC /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -120,6 +121,9 @@
 		EBB8FF6A2B1DA6B70001AFF9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		EBBF8E2A2B28498D00CD3480 /* HomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleView.swift; sourceTree = "<group>"; };
+		EBC033732B56843D009AE94E /* ProductsViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductsViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		EBC49A3B2B5128B800395565 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		EBC49A3D2B5128C800395565 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		EBDECDEF2B233CB3007D9F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EBEC7C772B20C42A00735E2F /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				EB04FD872B3AA36400E8D4AC /* TitleView.swift */,
-				EB04FD8B2B3AE02200E8D4AC /* ProductCollectionViewCell.swift */,
 				EB1858362B4A8D8100976E14 /* TopProductCollectionViewCell.swift */,
 			);
 			path = CollectionView;
@@ -304,6 +307,7 @@
 				EB80A0F42B1E76AE009EDF41 /* EntryPage */,
 				EB74E11E2B356E230097CD7B /* Login */,
 				EB74E13E2B359ED30097CD7B /* SignUp */,
+				EBC49A3A2B511F6200395565 /* Products */,
 				EB13DA622B35A0A90039541F /* Home */,
 				EB13DA652B35A1040039541F /* Category */,
 				EB13DA662B35A11A0039541F /* Cart */,
@@ -330,7 +334,6 @@
 				EB74E1262B356F210097CD7B /* UIViewController+showAlert.swift */,
 				EBEC7C772B20C42A00735E2F /* UIComponents.swift */,
 				EB04FD8D2B3B07D800E8D4AC /* SessionDelegate.swift */,
-				EB01984D2B4BE0EE00E17F6A /* UIStackView+Curved.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -366,6 +369,17 @@
 				EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */,
 			);
 			path = EntryPage;
+			sourceTree = "<group>";
+		};
+		EBC49A3A2B511F6200395565 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB04FD8B2B3AE02200E8D4AC /* ProductCollectionViewCell.swift */,
+				EBC49A3D2B5128C800395565 /* ProductsViewModel.swift */,
+				EBC49A3B2B5128B800395565 /* ProductsViewController.swift */,
+				EBC033732B56843D009AE94E /* ProductsViewController+CollectionView.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,6 +513,7 @@
 				EB74E1272B356F210097CD7B /* UIViewController+showAlert.swift in Sources */,
 				EBEC7C782B20C42A00735E2F /* UIComponents.swift in Sources */,
 				EBAC61B32B1F5D1C00F18D31 /* LogoTitleView.swift in Sources */,
+				EBC49A3E2B5128C800395565 /* ProductsViewModel.swift in Sources */,
 				EBBF8E2B2B28498E00CD3480 /* HomeTitleView.swift in Sources */,
 				EB04FD8C2B3AE02200E8D4AC /* ProductCollectionViewCell.swift in Sources */,
 				EB74E1402B359EDC0097CD7B /* SignUpViewModel.swift in Sources */,
@@ -514,10 +529,11 @@
 				EB9A58292B21F05800FE585A /* CartViewController.swift in Sources */,
 				EB04FD8E2B3B07D800E8D4AC /* SessionDelegate.swift in Sources */,
 				EB60FC8C2B1A17C0004DF45F /* AppDelegate.swift in Sources */,
+				EBC033742B56843D009AE94E /* ProductsViewController+CollectionView.swift in Sources */,
 				EB04FD882B3AA36400E8D4AC /* TitleView.swift in Sources */,
-				EB01984E2B4BE0EE00E17F6A /* UIStackView+Curved.swift in Sources */,
 				EB3E25A82B40728100B6AF49 /* EntryPage.swift in Sources */,
 				EB04FD8A2B3AD73700E8D4AC /* CategoryCollectionViewCell.swift in Sources */,
+				EBC49A3C2B5128B800395565 /* ProductsViewController.swift in Sources */,
 				EB66E73C2B35B8C9008D4AC3 /* ProductsResponse.swift in Sources */,
 				EB60FC8E2B1A17C0004DF45F /* SceneDelegate.swift in Sources */,
 				EB80A0F82B1E787C009EDF41 /* EntryPageViewController.swift in Sources */,

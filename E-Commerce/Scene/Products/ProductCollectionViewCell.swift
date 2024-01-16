@@ -76,7 +76,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
         titleLabel.text = nil
         priceLabel.text = nil
         ratingLabel.text = nil
-        wishlistButton.setImage(nil, for: .normal)
     }
     
     private func setupUI() {

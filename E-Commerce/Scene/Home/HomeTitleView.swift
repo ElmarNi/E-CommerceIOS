@@ -10,9 +10,11 @@ import SnapKit
 
 class HomeTitleView: UIView {
     private let spinner = Spinner()
+    var searchButtonOnAction: () -> Void = {}
     
     private let profileButton: UIButton = {
         let button = UIButton()
+        button.setTitle(nil, for: .normal)
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
         return button
@@ -20,6 +22,7 @@ class HomeTitleView: UIView {
     
     private let searchButton: UIButton = {
         let button = UIButton()
+        button.setTitle(nil, for: .normal)
         button.setImage(UIImage(named: "search"), for: .normal)
         return button
     }()
@@ -33,6 +36,7 @@ class HomeTitleView: UIView {
         spinner.startAnimating()
         profileButton.addSubview(spinner)
         setupUI()
+
     }
     
     required init?(coder: NSCoder) {

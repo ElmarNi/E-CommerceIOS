@@ -51,7 +51,6 @@ final class NetworkManager {
             delegateQueue: OperationQueue.main).dataTask(with: request)
         { data, _, error in
             guard let data = data, error == nil else {
-                
                 completion(.failure(.error))
                 return
             }

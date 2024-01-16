@@ -13,6 +13,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.44, green: 0.45, blue: 0.52, alpha: 1)
+        UIBarButtonItem.appearance().tintColor = .black
         
         let homeVC = HomeViewController()
         let categoriesVC = CategoriesViewController()

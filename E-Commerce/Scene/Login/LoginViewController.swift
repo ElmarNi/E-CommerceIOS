@@ -63,7 +63,6 @@ class LoginViewController: UIViewController {
         
         
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.tintColor = .black
         navigationItem.titleView = LogoTitleView()
         
         mainFrame.addSubview(titleLabel)

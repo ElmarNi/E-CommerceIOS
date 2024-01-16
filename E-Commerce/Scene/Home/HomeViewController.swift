@@ -62,6 +62,7 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: homeTitleView)
     }
     
