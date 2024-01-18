@@ -8,33 +8,54 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureAppearance()
+        configureViewControllers()
+    }
+    
+    private func configureAppearance() {
         UITabBar.appearance().tintColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.44, green: 0.45, blue: 0.52, alpha: 1)
         UIBarButtonItem.appearance().tintColor = .black
-        
+    }
+    
+    private func configureViewControllers() {
         let homeVC = HomeViewController()
         let categoriesVC = CategoriesViewController()
         let cartVC = CartViewController()
         let profileVC = ProfileViewController()
         let wishlistVC = WishlistViewController()
         
-        let homeNavVC = UINavigationController(rootViewController: homeVC)
-        let categoriesNavVC = UINavigationController(rootViewController: categoriesVC)
-        let cartNavVC = UINavigationController(rootViewController: cartVC)
-        let profileNavVC = UINavigationController(rootViewController: profileVC)
-        let wishlistNavVC = UINavigationController(rootViewController: wishlistVC)
+        let homeNavVC = createNavigationController(rootViewController: homeVC, title: "Home", imageName: .home)
+        let categoriesNavVC = createNavigationController(rootViewController: categoriesVC, title: "Categories", imageName: .categories)
+        let cartNavVC = createNavigationController(rootViewController: cartVC, title: "Cart", imageName: .cart)
+        let profileNavVC = createNavigationController(rootViewController: profileVC, title: "Profile", imageName: .profile)
+        let wishlistNavVC = createNavigationController(rootViewController: wishlistVC, title: "Wishlist", imageName: .wishlist)
         
-        homeNavVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home-inactive"), selectedImage: UIImage(named: "home-active"))
-        
-        categoriesNavVC.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(named: "categories-inactive"), selectedImage: UIImage(named: "categories-active"))
-        cartNavVC.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(named: "cart-inactive"), selectedImage: UIImage(named: "cart-active"))
-        profileNavVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile-inactive"), selectedImage: UIImage(named: "profile-active"))
-        wishlistNavVC.tabBarItem = UITabBarItem(title: "Wishlist", image: UIImage(named: "wishlist-inactive"), selectedImage: UIImage(named: "wishlist-active"))
-        
-        viewControllers = [homeNavVC, categoriesNavVC, cartNavVC, wishlistNavVC,profileNavVC]
+        viewControllers = [homeNavVC, categoriesNavVC, cartNavVC, wishlistNavVC, profileNavVC]
     }
-
+    
+    private func createNavigationController(rootViewController: UIViewController, title: String, imageName: ImageName) -> UINavigationController {
+        let navController = UINavigationController(rootViewController: rootViewController)
+        navController.tabBarItem = UITabBarItem(title: title, image: imageName.tabBarItemImage, selectedImage: imageName.tabBarSelectedImage)
+        return navController
+    }
+    
+    private enum ImageName: String {
+        case home
+        case categories
+        case cart
+        case profile
+        case wishlist
+        
+        var tabBarItemImage: UIImage? {
+            return UIImage(named: rawValue + "-inactive")
+        }
+        
+        var tabBarSelectedImage: UIImage? {
+            return UIImage(named: rawValue + "-active")
+        }
+    }
 }

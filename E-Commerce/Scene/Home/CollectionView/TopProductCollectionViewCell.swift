@@ -115,12 +115,8 @@ class TopProductCollectionViewCell: UICollectionViewCell {
             make.left.equalToSuperview().offset(12)
             make.bottom.equalToSuperview().inset(10)
         }
-        coverImage.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        spinner.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        coverImage.snp.makeConstraints { $0.edges.equalToSuperview() }
+        spinner.snp.makeConstraints { $0.center.equalToSuperview() }
         indicatorsStackView.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().inset(16)

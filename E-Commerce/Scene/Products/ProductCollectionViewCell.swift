@@ -83,9 +83,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
             make.left.width.top.equalToSuperview()
             make.height.equalTo(138)
         }
-        spinner.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        spinner.snp.makeConstraints { $0.center.equalToSuperview() }
         titleLabel.snp.makeConstraints { make in
             make.left.width.equalToSuperview()
             make.top.equalTo(coverImage.snp.bottom).offset(8)

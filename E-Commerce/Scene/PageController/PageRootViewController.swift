@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class PageRootViewController: UIPageViewController {
-    private var pages: [UIViewController] = [UIViewController]()
+    private var pages = [UIViewController]()
     private var count = 0
     private var currentIndex = 0
     
@@ -38,19 +38,6 @@ class PageRootViewController: UIPageViewController {
         count = data.count
         configurePages()
     }
-    
-//    func configureHomePage(_ data: [Product]) {
-//        for i in 0..<data.count {
-//            let pageViewController = HomePageViewController(indicatorCount: data.count)
-//            pageViewController.configure(product: data[i])
-//            pageViewController.configureIndicators(count: data.count, currentIndex: i)
-//            pages.append(pageViewController)
-//        }
-//        count = 0
-//        configurePages()
-//        fromHome = true
-//        self.currentIndex = 2
-//    }
     
     private func configurePages() {
         guard pages.count > 0 else { return }
@@ -94,10 +81,7 @@ extension PageRootViewController: UIPageViewControllerDelegate {
 
 extension PageRootViewController: EntryPageViewControllerDelegate {
     func nextButtonTapped(index: Int) {
-        guard index + 1 < pages.count else {
-            return
-        }
-        
+        guard index + 1 < pages.count else { return }
         currentIndex = index + 1
         self.setViewControllers([self.pages[index+1]], direction: .forward, animated: true, completion: nil)
     }

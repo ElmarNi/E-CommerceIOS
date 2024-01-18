@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 class PaddedTextField: UITextField {
-    var padding: UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 12)
-    }
+    private var padding: UIEdgeInsets
+    private var type: UIKeyboardType
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
@@ -25,14 +24,15 @@ class PaddedTextField: UITextField {
         return bounds.inset(by: padding)
     }
     
-    init(placeholder: String) {
+    init(placeholder: String, 
+         padding: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 12),
+         keyboardType: UIKeyboardType = .default,
+         isSecureTextEntry: Bool = false)
+    {
+        self.padding = padding
+        self.type = keyboardType
         super.init(frame: .zero)
-        commonInit(placeholder: placeholder)
-    }
-    
-    init(placeholder: String, type: UIKeyboardType) {
-        super.init(frame: .zero)
-        self.keyboardType = type
+        self.isSecureTextEntry = isSecureTextEntry
         commonInit(placeholder: placeholder)
     }
     
@@ -46,21 +46,6 @@ class PaddedTextField: UITextField {
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1).cgColor
         self.font = UIFont(name: "PlusJakartaSans-Regular", size: 12)
-    }
-}
-
-class PaddedPasswordTextField: PaddedTextField {
-    override var padding: UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 50)
-    }
-    
-    override init(placeholder: String) {
-        super.init(placeholder: placeholder)
-        self.isSecureTextEntry = true
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 

@@ -23,7 +23,25 @@ final class ProductsViewModel {
                     self?.products = result.products
                     completion(false, nil)
                 default:
-                    print(response)
+                    completion(true, "Can't get products")
+                }
+            }
+        }
+    }
+    
+    func byQuery(sessionDelegate: URLSessionDelegate?, query: String, completion: @escaping (_ isError: Bool, _ errorString: String?) -> Void) {
+        DispatchQueue.main.async {[weak self] in
+            NetworkManager.shared.request(sessionDelegate: sessionDelegate,
+                                          requestBody: nil,
+                                          type: ProductsResponse.self,
+                                          url: "products/search?q=\(query)",
+                                          method: .GET)
+            { response in
+                switch response {
+                case .success(let result):
+                    self?.products = result.products
+                    completion(false, nil)
+                default:
                     completion(true, "Can't get products")
                 }
             }

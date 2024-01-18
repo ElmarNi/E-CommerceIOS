@@ -51,7 +51,7 @@ class SignUpViewController: UIViewController {
     
     private let passwordLabel = UserLabel(text: "Password")
     
-    private let passwordTextField = PaddedPasswordTextField(placeholder: "Enter your Password")
+    private let passwordTextField = PaddedTextField(placeholder: "Enter your Password", isSecureTextEntry: true)
     
     private let passwordError = ErrorLabel()
     
@@ -192,9 +192,7 @@ class SignUpViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
-        titleLabel.snp.makeConstraints { make in
-            make.left.right.top.equalToSuperview()
-        }
+        titleLabel.snp.makeConstraints { $0.left.right.top.equalToSuperview() }
         
         haveAccountLabel.snp.makeConstraints { make in
             make.left.equalToSuperview()
@@ -265,13 +263,9 @@ class SignUpViewController: UIViewController {
             make.height.equalTo(60)
         }
         
-        spinner.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-        }
+        spinner.snp.makeConstraints { $0.center.equalToSuperview() }
         
-        layer.snp.makeConstraints { make in
-            make.left.right.top.bottom.equalToSuperview()
-        }
+        layer.snp.makeConstraints { $0.left.right.top.bottom.equalToSuperview() }
     }
     
 }

@@ -38,20 +38,13 @@ class CategoriesViewController: UIViewController {
         setupCollectionView()
         spinner.startAnimating()
         viewModel.categories(sessionDelegate: self) {[weak self] isError, errorString in
-            if isError {
-                self?.showAlert(title: "Error", message: errorString)
-            }
-            else {
-                self?.collectionView.reloadData()
-            }
+            isError ? self?.showAlert(title: "Error", message: errorString) : self?.collectionView.reloadData()
             self?.spinner.stopAnimating()
         }
     }
     
     private func setupUI() {
-        spinner.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        spinner.snp.makeConstraints { $0.center.equalToSuperview() }
         collectionView.snp.makeConstraints { make in
             make.top.height.equalToSuperview()
             make.left.equalToSuperview().offset(12)
