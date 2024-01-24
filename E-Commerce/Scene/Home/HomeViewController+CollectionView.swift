@@ -106,6 +106,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 view.onAction = {
                     self.navigationController?.tabBarController?.selectedIndex = 1
                 }
+            case .latestProducts(_):
+                view.onAction = {
+                    let productsViewController = ProductsViewController(isLatestProducts: true)
+                    productsViewController.title = "Latest Products"
+                    self.navigationController?.pushViewController(productsViewController, animated: true)
+                }
             default:
                 break
             }

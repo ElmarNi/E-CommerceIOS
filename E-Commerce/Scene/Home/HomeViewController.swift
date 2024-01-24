@@ -59,6 +59,9 @@ class HomeViewController: UIViewController {
         homeTitleView.searchButtonOnAction = {[weak self] position in
             self?.searchView.toggleShow()
         }
+        homeTitleView.profileButtonOnAction = {[weak self] in
+            self?.navigationController?.tabBarController?.selectedIndex = 4
+        }
         
 //        UserDefaults.standard.setValue(nil, forKey: "token")
 //        UserDefaults.standard.setValue(nil, forKey: "userID")

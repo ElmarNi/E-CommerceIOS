@@ -7,4 +7,5 @@ target 'E-Commerce' do
 
   # Pods for E-Commerce
   pod 'SnapKit'
+  pod 'Popover'
 end

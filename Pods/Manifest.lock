@@ -1,16 +1,20 @@
 PODS:
+  - Popover (1.3.0)
   - SnapKit (5.6.0)
 
 DEPENDENCIES:
+  - Popover
   - SnapKit
 
 SPEC REPOS:
   trunk:
+    - Popover
     - SnapKit
 
 SPEC CHECKSUMS:
+  Popover: 10e1d9528f81d9504df984b7b3f491292bc1822d
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 3337e25bd5d49cf8fbaff04650e823fb9e1b8873
+PODFILE CHECKSUM: 6a1b1d0fddc9a2fe20e155ef52d4a12e74ecc56a
 
 COCOAPODS: 1.12.1

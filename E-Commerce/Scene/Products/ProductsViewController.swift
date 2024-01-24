@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import Popover
 
 class ProductsViewController: UIViewController {
 
     private let category: String?
     private let query: String?
+    private let isLatestProducts: Bool?
     private let spinner = Spinner()
     private let searchView = SearchView()
+    private let filterView = FilterView()
+    private let popover = Popover()
     private let searchButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "search"), for: .normal)
@@ -40,9 +44,10 @@ class ProductsViewController: UIViewController {
         return collectionView
     }()
     
-    init(category: String? = nil, query: String? = nil) {
+    init(category: String? = nil, query: String? = nil, isLatestProducts: Bool? = nil) {
         self.category = category
         self.query = query
+        self.isLatestProducts = isLatestProducts
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -53,10 +58,10 @@ class ProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
         view.addSubview(collectionView)
         view.addSubview(spinner)
         view.addSubview(searchView)
+        filterView.frame = CGRect(x: 16, y: 0, width: view.bounds.width - 32, height: 368)
         
         setupUI()
         setupCollectionView()
@@ -85,12 +90,40 @@ class ProductsViewController: UIViewController {
                 self?.spinner.stopAnimating()
             }
         }
+        
+        if isLatestProducts != nil {
+            viewModel.latestProducts(sessionDelegate: self) {[weak self] isError, errorString in
+                if isError {
+                    self?.showAlert(title: "Error", message: errorString)
+                }
+                else {
+                    self?.collectionView.reloadData()
+                }
+                self?.spinner.stopAnimating()
+            }
+        }
+        
         searchButton.addTarget(self, action: #selector(searchButtonTapped(_:)), for: .touchUpInside)
+        filterButton.addTarget(self, action: #selector(filterButtonTapped(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: filterButton), UIBarButtonItem(customView: searchButton)]
         
         searchView.onAction = {[weak self] text in
             let productsViewController = ProductsViewController(query: text)
             self?.navigationController?.pushViewController(productsViewController, animated: true)
+        }
+        
+        filterView.onAction = {[weak self] index in
+            self?.spinner.startAnimating()
+            self?.spinner.isHidden = false
+            self?.collectionView.isHidden = true
+            self?.popover.dismiss()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                self?.viewModel.filterProducts(Filter(rawValue: index), completion: {
+                    self?.collectionView.reloadData()
+                    self?.spinner.stopAnimating()
+                    self?.collectionView.isHidden = false
+                })
+            }
         }
     }
     
@@ -101,6 +134,11 @@ class ProductsViewController: UIViewController {
     
     @objc private func searchButtonTapped(_ sender: UIButton) {
         toggleSearch()
+    }
+    
+    @objc private func filterButtonTapped(_ sender: UIButton) {
+        let originPoint = CGPoint(x: view.frame.width, y: view.safeAreaInsets.top)
+        popover.show(filterView, point: originPoint)
     }
     
     private func toggleSearch(hide: Bool = false) {

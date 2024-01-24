@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AF175731E70BEF79EF79AE02E0ED9FC2"
-               BuildableName = "Pods_E_Commerce.framework"
-               BlueprintName = "Pods-E-Commerce"
+               BlueprintIdentifier = "89ADB0D61D0BE9648E9853F5F8BDA717"
+               BuildableName = "Popover.framework"
+               BlueprintName = "Popover"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

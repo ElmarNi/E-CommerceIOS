@@ -11,6 +11,7 @@ import SnapKit
 class HomeTitleView: UIView {
     private let spinner = Spinner()
     var searchButtonOnAction: (Int) -> Void = {_ in }
+    var profileButtonOnAction: () -> Void = {}
     
     private let profileButton: UIButton = {
         let button = UIButton()
@@ -37,6 +38,7 @@ class HomeTitleView: UIView {
         profileButton.addSubview(spinner)
         setupUI()
         searchButton.addTarget(self, action: #selector(searchButtonTapped(_:)), for: .touchUpInside)
+        profileButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +48,10 @@ class HomeTitleView: UIView {
     @objc private func searchButtonTapped(_ sender: UIButton) {
         searchButtonOnAction(sender.tag)
         changeSearchButtonImage()
+    }
+    
+    @objc private func profileButtonTapped() {
+        profileButtonOnAction()
     }
     
     private func setupUI() {
