@@ -11,7 +11,7 @@ import SnapKit
 class FilterView: UIView {
     var onAction: (Int) -> Void = {_ in }
     private let tableView = UITableView()
-    private let applyButton = RoundedBlackButton(title: "Apply")
+    private let applyButton = RoundedButton(title: "Apply")
     private let title: UILabel = {
         let label = UILabel()
         label.text = "Filter"

@@ -123,13 +123,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch viewModel.sections[indexPath.section] {
-        case .topProducts(_): break
+        case let .topProducts(products), let .latestProducts(products):
+            collectionView.deselectItem(at: indexPath, animated: true)
+            let productDetailVC = ProductDetailViewController(product: products[indexPath.row])
+            navigationController?.pushViewController(productDetailVC, animated: true)
         case let .categories(categories):
             let productsViewController = ProductsViewController(category: categories[indexPath.row])
             productsViewController.title = categories[indexPath.row]
             navigationController?.pushViewController(productsViewController, animated: true)
-        case .latestProducts(_): break
         }
     }
-    
 }

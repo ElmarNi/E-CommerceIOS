@@ -67,11 +67,12 @@ class SignUpViewController: UIViewController {
         return button
     }()
     
-    private let createAccountButton = RoundedBlackButton(title: "Create Account")
+    private let createAccountButton = RoundedButton(title: "Create Account")
     private let viewModel = SignUpViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.titleView = LogoTitleView()
         
         mainFrame.addSubview(titleLabel)

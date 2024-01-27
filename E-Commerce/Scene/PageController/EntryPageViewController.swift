@@ -58,21 +58,14 @@ class EntryPageViewController: UIViewController {
         return label
     }()
     
-    private let nextButton = RoundedBlackButton(title: "Next")
+    private let nextButton = RoundedButton(title: "Next")
     
-    private let loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Login", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1).cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 12
-        button.clipsToBounds = true
-        button.titleLabel?.font = UIFont(name: "PlusJakartaSans-SemiBold", size: 14)
-        return button
-    }()
+    private let loginButton = RoundedButton(title: "Login",
+                                            bgColor: .white,
+                                            borderColor: UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1).cgColor,
+                                            textColor: .black)
     
-    private let getStartedButton = RoundedBlackButton(title: "Get Started")
+    private let getStartedButton = RoundedButton(title: "Get Started")
     
     override func viewDidLoad() {
         super.viewDidLoad()

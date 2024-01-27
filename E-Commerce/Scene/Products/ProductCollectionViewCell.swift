@@ -107,9 +107,9 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     func configure(product: Product) {
         titleLabel.text = product.title
-        priceLabel.text = "$\(product.price)"
+        priceLabel.text = "$\(String(product.price).replacingOccurrences(of: ".0", with: ""))"
         ratingLabel.text = "rating: \(product.rating)/5"
-        guard let url = URL(string: product.thumbnail) else { return }
+        guard let url = URL(string: product.thumbnail ?? "") else { return }
         coverImage.download(from: url, sessionDelegate: self) {[weak self] in
             self?.spinner.stopAnimating()
         }

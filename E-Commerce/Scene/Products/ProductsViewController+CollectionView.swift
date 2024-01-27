@@ -41,4 +41,10 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let productDetailVC = ProductDetailViewController(product: viewModel.getProduct(index: indexPath.row))
+        navigationController?.pushViewController(productDetailVC, animated: true)
+    }
+    
 }

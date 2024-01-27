@@ -49,11 +49,16 @@ class PaddedTextField: UITextField {
     }
 }
 
-class RoundedBlackButton: UIButton {
-    init(title: String) {
+class RoundedButton: UIButton {
+    init(title: String, bgColor: UIColor? = UIColor(red: 0.11, green: 0.11, blue: 0.11, alpha: 1), borderColor: CGColor? = nil, textColor: UIColor? = .white) {
         super.init(frame: .zero)
         self.setTitle(title, for: .normal)
-        self.backgroundColor = UIColor(red: 0.11, green: 0.11, blue: 0.11, alpha: 1)
+        self.backgroundColor = bgColor
+        if let borderColor = borderColor {
+            self.layer.borderWidth = 1
+            self.layer.borderColor = borderColor
+        }
+        self.setTitleColor(textColor, for: .normal)
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 12
         self.clipsToBounds = true

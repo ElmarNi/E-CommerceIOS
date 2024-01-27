@@ -10,6 +10,7 @@ import SnapKit
 
 class TopProductCollectionViewCell: UICollectionViewCell {
     static let identifier = "TopProductCollectionViewCell"
+    var isProductDetail = false
     private var count = 0;
     private var index = 0;
     
@@ -44,8 +45,6 @@ class TopProductCollectionViewCell: UICollectionViewCell {
     private let indicatorsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1)
-        //        stackView.layer.cornerRadius = 12
-        //        stackView.clipsToBounds = true
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .center
@@ -72,7 +71,9 @@ class TopProductCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        gradientLayer.frame = coverImage.bounds
+        if !isProductDetail {
+            gradientLayer.frame = coverImage.bounds
+        }
     }
     
     override func prepareForReuse() {
@@ -82,8 +83,8 @@ class TopProductCollectionViewCell: UICollectionViewCell {
         titleLabel.text = nil
     }
     
-    func configure(product: Product, count: Int, index: Int) {
-        titleLabel.text = product.title
+    func configure(product: Product? = nil, count: Int, index: Int, urlString: String? = nil) {
+        titleLabel.text = product?.title
         self.count = count
         self.index = index
         
@@ -104,9 +105,22 @@ class TopProductCollectionViewCell: UICollectionViewCell {
             make.right.equalTo(indicatorsStackView.snp.left)
         }
         
-        guard let url = URL(string: product.thumbnail) else { return }
-        coverImage.download(from: url, sessionDelegate: self) {[weak self] in
-            self?.spinner.stopAnimating()
+        if let url = URL(string: product?.thumbnail ?? ""), !isProductDetail {
+            coverImage.download(from: url, sessionDelegate: self) {[weak self] in
+                self?.spinner.stopAnimating()
+            }
+        }
+        
+        if isProductDetail {
+            layer.cornerRadius = 0
+            coverImage.contentMode = .scaleAspectFit
+            gradientLayer.frame = .zero
+            titleLabel.text = nil
+            coverImage.backgroundColor = .black
+            guard let url = URL(string: urlString ?? "") else { return }
+            coverImage.download(from: url, sessionDelegate: self) {[weak self] in
+                self?.spinner.stopAnimating()
+            }
         }
     }
     

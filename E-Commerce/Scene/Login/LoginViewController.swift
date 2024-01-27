@@ -54,15 +54,14 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let loginButton = RoundedBlackButton(title: "Login")
+    private let loginButton = RoundedButton(title: "Login")
     
     private let spinner = Spinner(color: .white)
     private let viewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.titleView = LogoTitleView()
         
         mainFrame.addSubview(titleLabel)
