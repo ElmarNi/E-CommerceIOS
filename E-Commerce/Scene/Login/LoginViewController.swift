@@ -10,12 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
 
     private let mainFrame = UIView()
-    private let layer: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black.withAlphaComponent(0.6)
-        view.isHidden = true
-        return view
-    }()
+    private let layer = LoadingView()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -56,7 +51,6 @@ class LoginViewController: UIViewController {
     
     private let loginButton = RoundedButton(title: "Login")
     
-    private let spinner = Spinner(color: .white)
     private let viewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +69,6 @@ class LoginViewController: UIViewController {
         mainFrame.addSubview(loginButton)
         view.addSubview(mainFrame)
         view.addSubview(layer)
-        view.addSubview(spinner)
         
         for case let textField as UITextField in mainFrame.subviews {
             textField.delegate = self
@@ -110,7 +103,6 @@ class LoginViewController: UIViewController {
         else { return }
         
         layer.isHidden = false
-        spinner.startAnimating()
         
         DispatchQueue.main.async {[weak self] in
             self?.viewModel.login(sessionDelegate: self, username: username, password: password) {[weak self] success in
@@ -122,7 +114,6 @@ class LoginViewController: UIViewController {
                     self?.showAlert(title: "Error", message: "Username or Passowrd is wrong")
                 }
                 self?.layer.isHidden = true
-                self?.spinner.stopAnimating()
             }
         }
     }
@@ -180,8 +171,6 @@ class LoginViewController: UIViewController {
             make.top.equalTo(passwordTextField.snp.bottom).offset(24)
             make.height.equalTo(60)
         }
-        
-        spinner.snp.makeConstraints { $0.center.equalToSuperview() }
         
         layer.snp.makeConstraints { $0.left.right.top.bottom.equalToSuperview() }
     }

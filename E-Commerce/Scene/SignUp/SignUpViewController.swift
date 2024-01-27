@@ -11,12 +11,7 @@ import SnapKit
 class SignUpViewController: UIViewController {
     
     private let mainFrame = UIView()
-    private let layer: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black.withAlphaComponent(0.6)
-        view.isHidden = true
-        return view
-    }()
+    private let loadingView = LoadingView()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -55,8 +50,6 @@ class SignUpViewController: UIViewController {
     
     private let passwordError = ErrorLabel()
     
-    private let spinner = Spinner(color: .white)
-    
     private let toggleButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "eye"), for: .normal)
@@ -90,8 +83,7 @@ class SignUpViewController: UIViewController {
         passwordTextField.addSubview(toggleButton)
         mainFrame.addSubview(createAccountButton)
         view.addSubview(mainFrame)
-        view.addSubview(layer)
-        view.addSubview(spinner)
+        view.addSubview(loadingView)
         
         for case let textField as UITextField in mainFrame.subviews {
             textField.delegate = self
@@ -168,8 +160,7 @@ class SignUpViewController: UIViewController {
         }
         
         if !isError {
-            layer.isHidden = false
-            spinner.startAnimating()
+            loadingView.isHidden = false
             DispatchQueue.main.async {[weak self] in
                 self?.viewModel.register(sessionDelegate: self, username: username, password: password, fullname: fullname) { [weak self] success in
                     if success {
@@ -178,8 +169,7 @@ class SignUpViewController: UIViewController {
                     else {
                         self?.showAlert(title: "Error", message: "Something went wrong")
                     }
-                    self?.layer.isHidden = true
-                    self?.spinner.stopAnimating()
+                    self?.loadingView.isHidden = true
                 }
             }
         }
@@ -264,9 +254,7 @@ class SignUpViewController: UIViewController {
             make.height.equalTo(60)
         }
         
-        spinner.snp.makeConstraints { $0.center.equalToSuperview() }
-        
-        layer.snp.makeConstraints { $0.left.right.top.bottom.equalToSuperview() }
+        loadingView.snp.makeConstraints { $0.left.right.top.bottom.equalToSuperview() }
     }
     
 }

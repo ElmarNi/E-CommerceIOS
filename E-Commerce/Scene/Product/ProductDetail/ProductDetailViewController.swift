@@ -195,7 +195,7 @@ class ProductDetailViewController: UIViewController {
     }
         
     @objc private func buyNowButtonTapped() {
-        guard let text = quantityLabel.text, var num = Int(text) else { return }
+        guard let text = quantityLabel.text, let num = Int(text) else { return }
         if num > 0
         {
             navigationController?.tabBarController?.selectedIndex = 2
