@@ -101,6 +101,7 @@
 		EB2D39A02B65904C00697DF4 /* CartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB3E25A72B40728100B6AF49 /* EntryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPage.swift; sourceTree = "<group>"; };
 		EB4DC9AB2B361B4500005385 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		EB5675A72B67071000F63632 /* Design and API.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Design and API.md"; sourceTree = "<group>"; };
 		EB60FC882B1A17C0004DF45F /* E-Commerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Commerce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB60FC8B2B1A17C0004DF45F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB60FC8D2B1A17C0004DF45F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -332,6 +333,7 @@
 				EB60FC8B2B1A17C0004DF45F /* AppDelegate.swift */,
 				EB60FC8D2B1A17C0004DF45F /* SceneDelegate.swift */,
 				EB60FC942B1A17C2004DF45F /* Assets.xcassets */,
+				EB5675A72B67071000F63632 /* Design and API.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

@@ -10,6 +10,7 @@ import SnapKit
 
 class CartViewController: UIViewController {
     internal let viewModel = CartViewModel()
+    internal let loadingView = LoadingView()
     private let spinner = Spinner()
     internal let collectionView: UICollectionView = {
         let cv = UICollectionView(
@@ -24,7 +25,7 @@ class CartViewController: UIViewController {
         return cv
     }()
     
-    private let checkoutButton: RoundedButton = {
+    internal let checkoutButton: RoundedButton = {
         let btn = RoundedButton(title: "Checkout")
         btn.isHidden = true
         return btn
@@ -55,8 +56,19 @@ class CartViewController: UIViewController {
         view.addSubview(checkoutButton)
         view.addSubview(totalLabel)
         view.addSubview(priceLabel)
+        
         setupUI()
         setupCollectionView()
+        if let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first {
+            
+            loadingView.frame = keyWindow.bounds
+            keyWindow.addSubview(loadingView)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -68,14 +80,19 @@ class CartViewController: UIViewController {
                     self?.showAlert(title: "Error", message: errorString)
                 }
                 else {
-                    if let isCartEmpty = isCartEmpty, !isCartEmpty {
-                        self?.collectionView.reloadData()
-                        self?.priceLabel.text = "$\(String(self?.viewModel.cart?.total ?? 0).replacingOccurrences(of: ".0", with: ""))"
-                        self?.checkoutButton.setTitle("Checkout \(self?.viewModel.cart?.totalProducts ?? 0)", for: .normal)
-                        self?.collectionView.isHidden = false
-                        self?.totalLabel.isHidden = false
-                        self?.priceLabel.isHidden = false
-                        self?.checkoutButton.isHidden = false
+                    if let isCartEmpty = isCartEmpty {
+                        if !isCartEmpty {
+                            self?.collectionView.reloadData()
+                            self?.priceLabel.text = "$\(String(self?.viewModel.cart?.total ?? 0).replacingOccurrences(of: ".0", with: ""))"
+                            self?.checkoutButton.setTitle("Checkout (\(self?.viewModel.cart?.totalProducts ?? 0))", for: .normal)
+                            self?.collectionView.isHidden = false
+                            self?.totalLabel.isHidden = false
+                            self?.priceLabel.isHidden = false
+                            self?.checkoutButton.isHidden = false
+                        }
+                        else {
+                            
+                        }
                     }
                 }
                 self?.spinner.stopAnimating()

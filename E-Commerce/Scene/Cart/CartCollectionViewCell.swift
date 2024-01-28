@@ -12,8 +12,9 @@ class CartCollectionViewCell: UICollectionViewCell {
     static let identifier = "CartCollectionViewCell"
     var deleteButtonOnAction: () -> Void = {}
     var priceChangeOnAction: (Float) -> Void = {_ in }
-    private var cartProduct: CartProduct?
+    internal var cartProduct: CartProduct?
     private let spinner = Spinner()
+    private var quantity = 0
     
     private let coverImage: UIImageView = {
         let imageView = UIImageView()
@@ -59,7 +60,7 @@ class CartCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    private let quantityLabel: UILabel = {
+    internal let quantityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "PlusJakartaSans-Medium", size: 16)
         label.text = "0"
@@ -97,6 +98,7 @@ class CartCollectionViewCell: UICollectionViewCell {
         
         plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         minusButton.addTarget(self, action: #selector(minusButtonTapped), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -114,15 +116,23 @@ class CartCollectionViewCell: UICollectionViewCell {
         minusButton.tintColor = .black
     }
     
+    @objc private func deleteButtonTapped() {
+        deleteButtonOnAction()
+    }
+    
     @objc private func plusButtonTapped() {
         guard let text = quantityLabel.text, var num = Int(text) else { return }
-        if num < cartProduct?.quantity ?? 0 {
+        if num < quantity {
             num += 1
+            guard let price = cartProduct?.price else { return }
+            cartProduct?.quantity = num
+            cartProduct?.total = Float(num) * price
+            
             quantityLabel.text = "\(num)"
             minusButton.tintColor = .black
-            plusButton.tintColor = (num == cartProduct?.quantity) ? UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1) : .black
-            totalLabel.text = "Total: $\(String(Float(num) * (cartProduct?.price ?? 0)).replacingOccurrences(of: ".0", with: ""))"
-            priceChangeOnAction(cartProduct?.price ?? 0)
+            plusButton.tintColor = (num == quantity) ? UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1) : .black
+            totalLabel.text = "Total: $\(String(Float(num) * price).replacingOccurrences(of: ".0", with: ""))"
+            priceChangeOnAction(price)
         } else {
             shake()
         }
@@ -132,11 +142,16 @@ class CartCollectionViewCell: UICollectionViewCell {
         guard let text = quantityLabel.text, var num = Int(text) else { return }
         if num > 1 {
             num -= 1
+            guard let price = cartProduct?.price else { return }
+            cartProduct?.quantity = num
+            cartProduct?.total = Float(num) * price
+            
             quantityLabel.text = "\(num)"
             minusButton.tintColor = (num == 1) ? UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1) : .black
             plusButton.tintColor = .black
-            totalLabel.text = "Total: $\(String(Float(num) * (cartProduct?.price ?? 0)).replacingOccurrences(of: ".0", with: ""))"
-            priceChangeOnAction(-(cartProduct?.price ?? 0))
+            totalLabel.text = "Total: $\(String(Float(num) * price).replacingOccurrences(of: ".0", with: ""))"
+            priceChangeOnAction(-(price))
+
         } else {
             shake()
         }
@@ -209,6 +224,7 @@ class CartCollectionViewCell: UICollectionViewCell {
     
     func configure(cartProduct: CartProduct?) {
         self.cartProduct = cartProduct
+        self.quantity = cartProduct?.quantity ?? 0
         titleLabel.text = cartProduct?.title
         priceLabel.text = "Price: $\(String(cartProduct?.price ?? 0).replacingOccurrences(of: ".0", with: ""))"
         totalLabel.text = "Total: $\(String(cartProduct?.total ?? 0).replacingOccurrences(of: ".0", with: ""))"

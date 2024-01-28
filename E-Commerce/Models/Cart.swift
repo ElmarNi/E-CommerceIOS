@@ -9,7 +9,7 @@ import Foundation
 
 struct Cart: Codable {
     let id: Int
-    let products: [CartProduct]
+    var products: [CartProduct]
     let total: Double
     let discountedTotal: Double
     let userId: Int

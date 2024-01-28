@@ -8,7 +8,8 @@ final class LoginViewModel {
             "password": password
         ]
         
-        NetworkManager.shared.request(sessionDelegate: sessionDelegate, requestBody: requestBody,
+        NetworkManager.shared.request(sessionDelegate: sessionDelegate, 
+                                      requestBody: requestBody,
                                       type: Login.self,
                                       url: "auth/login",
                                       method: .POST)

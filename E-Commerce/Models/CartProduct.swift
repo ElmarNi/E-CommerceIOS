@@ -10,8 +10,8 @@ import Foundation
 struct CartProduct: Codable {
     let id: Int
     let title: String
-    let quantity: Int
-    let total: Float
+    var quantity: Int
+    var total: Float
     let price: Float
     let thumbnail: String
 }

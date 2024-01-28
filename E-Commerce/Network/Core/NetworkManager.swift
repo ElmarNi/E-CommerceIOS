@@ -15,6 +15,7 @@ final class NetworkManager {
     enum METHOD: String {
         case GET
         case POST
+        case PUT
     }
     
     enum ErrorType: String, Error {
@@ -44,7 +45,6 @@ final class NetworkManager {
                 return
             }
         }
-        
         URLSession(
             configuration: .default,
             delegate: sessionDelegate ?? .none,
