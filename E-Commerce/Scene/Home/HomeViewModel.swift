@@ -26,9 +26,8 @@ final class HomeViewModel {
     
     var sections = [Section]()
     
-    func userImage(sessionDelegate: URLSessionDelegate?, completion: @escaping (URL?) -> Void) {
-        let userID = UserDefaults.standard.value(forKey: "userID") as? Int ?? -1
-        if userID != -1 {
+    func userImage(sessionDelegate: URLSessionDelegate?, userID: Int, completion: @escaping (URL?) -> Void) {
+        DispatchQueue.main.async {
             NetworkManager.shared.request(sessionDelegate: sessionDelegate, requestBody: nil,
                                           type: User.self,
                                           url: "users/\(userID)",

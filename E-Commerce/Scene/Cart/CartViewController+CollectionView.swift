@@ -65,6 +65,7 @@ extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 self?.viewModel.updateCart(
                     sessionDelegate: self,
                     cartId: cartId,
+                    merge: false,
                     products: products,
                     completion:
                         { isError, errorString in
@@ -78,6 +79,11 @@ extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                 self?.checkoutButton.setTitle("Checkout (\(products.count))", for: .normal)
                                 guard let text = self?.priceLabel.text, let total = Float(String(text.dropFirst())) else { return }
                                 self?.priceLabel.text = "$\(String(total - deletedProductTotal).replacingOccurrences(of: ".0", with: ""))"
+                                self?.hideOrDisplay(isEmpty: self?.viewModel.cart?.products.count == 0)
+                                
+                                if self?.viewModel.cart?.products.count == 0 {
+                                    self?.hideOrDisplay(isEmpty: self?.viewModel.cart?.products.count == 0)
+                                }
                             }
                         }
                 )

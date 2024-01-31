@@ -26,15 +26,13 @@ class TabBarController: UITabBarController {
         let categoriesVC = CategoriesViewController()
         let cartVC = CartViewController()
         let profileVC = ProfileViewController()
-        let wishlistVC = WishlistViewController()
         
         let homeNavVC = createNavigationController(rootViewController: homeVC, title: "Home", imageName: .home)
         let categoriesNavVC = createNavigationController(rootViewController: categoriesVC, title: "Categories", imageName: .categories)
         let cartNavVC = createNavigationController(rootViewController: cartVC, title: "Cart", imageName: .cart)
         let profileNavVC = createNavigationController(rootViewController: profileVC, title: "Profile", imageName: .profile)
-        let wishlistNavVC = createNavigationController(rootViewController: wishlistVC, title: "Wishlist", imageName: .wishlist)
         
-        viewControllers = [homeNavVC, categoriesNavVC, cartNavVC, wishlistNavVC, profileNavVC]
+        viewControllers = [homeNavVC, categoriesNavVC, cartNavVC, profileNavVC]
     }
     
     private func createNavigationController(rootViewController: UIViewController, title: String, imageName: ImageName) -> UINavigationController {
@@ -48,7 +46,6 @@ class TabBarController: UITabBarController {
         case categories
         case cart
         case profile
-        case wishlist
         
         var tabBarItemImage: UIImage? {
             return UIImage(named: rawValue + "-inactive")

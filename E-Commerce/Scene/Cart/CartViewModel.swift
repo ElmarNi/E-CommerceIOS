@@ -23,26 +23,26 @@ final class CartViewModel {
                     self?.cart = result.carts.first
                     completion(false, nil, self?.cart == nil)
                 default:
-                    completion(true, "Can't get cart", nil)
+                    completion(true, "Can't get cart, please try again", nil)
                 }
             }
         }
     }
     
-    func updateCart(sessionDelegate: URLSessionDelegate?, cartId: Int, products: [CartProduct], completion: @escaping (_ isError: Bool, _ errorString: String?) -> Void) {
+    func updateCart(sessionDelegate: URLSessionDelegate?, cartId: Int, merge: Bool, products: [CartProduct], completion: @escaping (_ isError: Bool, _ errorString: String?) -> Void) {
         
         let requestBody: [String: Any] = [
             "products": products.map { product in
                 return [
                     "id": product.id,
-                    "title": product.title,
+                    "title": product.title ?? "",
                     "quantity": product.quantity,
-                    "total": product.total,
-                    "price": product.price,
-                    "thumbnail": product.thumbnail
+                    "total": product.total ?? "",
+                    "price": product.price ?? "",
+                    "thumbnail": product.thumbnail ?? ""
                 ]
             },
-            "merge": false
+            "merge": merge
         ]
         
         DispatchQueue.main.async {
@@ -53,10 +53,44 @@ final class CartViewModel {
                                           method: .PUT)
             { response in
                 switch response {
-                case .success(let result):
+                case .success(_):
                     completion(false, nil)
                 default:
-                    completion(true, "Can't delete this product from cart, please try again")
+                    completion(true, "Can't update cart, please try again")
+                }
+            }
+        }
+    }
+    
+    func add(sessionDelegate: URLSessionDelegate?, userId: Int, products: [CartProduct], completion: @escaping (_ isError: Bool, _ errorString: String?) -> Void) {
+        
+        let requestBody: [String: Any] = [
+            "products": products.map { product in
+                return [
+                    "id": product.id,
+                    "title": product.title ?? "",
+                    "quantity": product.quantity,
+                    "total": product.total ?? "",
+                    "price": product.price ?? "",
+                    "thumbnail": product.thumbnail ?? ""
+                ]
+            },
+            "userId": userId
+        ]
+        
+        DispatchQueue.main.async {
+            NetworkManager.shared.request(sessionDelegate: sessionDelegate,
+                                          requestBody: requestBody,
+                                          type: Cart.self,
+                                          url: "carts/add",
+                                          method: .POST)
+            { response in
+                switch response {
+                case .success(let result):
+                    print(result)
+                    completion(false, nil)
+                default:
+                    completion(true, "Can't add to cart, please try again")
                 }
             }
         }

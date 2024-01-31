@@ -43,15 +43,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let wishlistButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "heart"), for: .normal)
-        button.backgroundColor = UIColor(red: 0.108, green: 0.105, blue: 0.105, alpha: 1)
-        button.imageEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-        button.clipsToBounds = true
-        return button
-    }()
-    
     private let spinner = Spinner()
     
     override init(frame: CGRect) {
@@ -62,7 +53,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
         addSubview(titleLabel)
         addSubview(priceLabel)
         addSubview(ratingLabel)
-        addSubview(wishlistButton)
         setupUI()
     }
     
@@ -96,13 +86,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
             make.left.width.equalToSuperview()
             make.top.equalTo(priceLabel.snp.bottom)
         }
-        wishlistButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(6)
-            make.top.equalToSuperview().offset(6)
-            make.width.height.equalTo(24)
-        }
-        wishlistButton.layoutIfNeeded()
-        wishlistButton.layer.cornerRadius = wishlistButton.frame.size.width / 2
     }
     
     func configure(product: Product) {

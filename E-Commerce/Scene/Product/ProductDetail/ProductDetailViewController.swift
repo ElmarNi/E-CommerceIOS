@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class ProductDetailViewController: UIViewController {
+    private let viewModel = CartViewModel()
+    private let loadingView = LoadingView()
     internal var product: Product
     internal let collectionView: UICollectionView = {
         let collectionView = UICollectionView(
@@ -145,6 +147,17 @@ class ProductDetailViewController: UIViewController {
         minusButton.addTarget(self, action: #selector(minusButtonTapped), for: .touchUpInside)
         addCartButton.addTarget(self, action: #selector(addCartButtonTapped), for: .touchUpInside)
         buyNowButton.addTarget(self, action: #selector(buyNowButtonTapped), for: .touchUpInside)
+        
+        if let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first {
+            
+            loadingView.frame = keyWindow.bounds
+            keyWindow.addSubview(loadingView)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -191,9 +204,71 @@ class ProductDetailViewController: UIViewController {
     }
     
     @objc private func addCartButtonTapped() {
-        print("add cart tapped")
+        guard let text = quantityLabel.text, let quantity = Int(text) else { return }
+        if quantity > 0
+        {
+            if let userId = UserDefaults.standard.value(forKey: "userID") as? Int {
+                loadingView.isHidden = false
+                viewModel.carts(sessionDelegate: self, userId: userId) {[weak self] isError, errorString, isCartEmpty in
+                    if isError {
+                        self?.showAlert(title: "Error", message: "Can't add to cart, please try again")
+                    }
+                    else {
+                        if var isCartEmpty = isCartEmpty {
+                            let products = [CartProduct(id: self?.product.id ?? 0,
+                                                        title: nil,
+                                                        quantity: quantity,
+                                                        total: nil,
+                                                        price: self?.product.price ?? 0,
+                                                        thumbnail: nil)]
+                            
+                            if isCartEmpty {
+                                self?.viewModel.add(
+                                    sessionDelegate: self,
+                                    userId: userId,
+                                    products: products,
+                                    completion:
+                                        { isError, errorString in
+                                            if isError {
+                                                self?.showAlert(title: "Error", message: errorString)
+                                            }
+                                            else {
+                                                self?.showAlert(title: "Success", message: "Product successfully added to cart")
+                                            }
+                                            self?.loadingView.isHidden = true
+                                        }
+                                )
+                            }
+                            else {
+                                guard let cartId = self?.viewModel.cart?.id else { return }
+                                
+                                self?.viewModel.updateCart(
+                                    sessionDelegate: self,
+                                    cartId: cartId,
+                                    merge: true,
+                                    products: products,
+                                    completion:
+                                        { isError, errorString in
+                                            if isError {
+                                                self?.showAlert(title: "Error", message: errorString)
+                                            }
+                                            else {
+                                                self?.showAlert(title: "Success", message: "Product successfully added to cart")
+                                            }
+                                            self?.loadingView.isHidden = true
+                                        }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            shake()
+        }
     }
-        
+    
     @objc private func buyNowButtonTapped() {
         guard let text = quantityLabel.text, let num = Int(text) else { return }
         if num > 0

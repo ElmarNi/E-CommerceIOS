@@ -76,15 +76,13 @@ class HomeViewController: UIViewController {
     }
     
     private func userImage() {
-        if UserDefaults.standard.value(forKey: "userID") != nil {
-            DispatchQueue.main.async {[weak self] in
-                self?.viewModel.userImage(sessionDelegate: self) { url in
-                    guard let url = url else { return }
-                    let imageView = UIImageView()
-                    imageView.download(from: url, sessionDelegate: self) { [weak self] in
-                        guard let image = imageView.image else { return }
-                        self?.homeTitleView.configure(profileImage: image)
-                    }
+        if let userID = UserDefaults.standard.value(forKey: "userID") as? Int {
+            viewModel.userImage(sessionDelegate: self, userID: userID) {[weak self] url in
+                guard let url = url else { return }
+                let imageView = UIImageView()
+                imageView.download(from: url, sessionDelegate: self) { [weak self] in
+                    guard let image = imageView.image else { return }
+                    self?.homeTitleView.configure(profileImage: image)
                 }
             }
         }

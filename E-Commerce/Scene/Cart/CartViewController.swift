@@ -9,8 +9,14 @@ import UIKit
 import SnapKit
 
 class CartViewController: UIViewController {
+    internal let customView = UIView()
+    
     internal let viewModel = CartViewModel()
     internal let loadingView = LoadingView()
+    internal let emptyView = StatusView(title: "Your cart is empty",
+                                       description: "Looks like you have not added anything in your cart. Go ahead and explore top categories. Looks like you have not added anything in your cart. Go ahead and explore top categories.",
+                                       buttonTitle: "Explore Categories", 
+                                       image: UIImage(named: "cart"))
     private let spinner = Spinner()
     internal let collectionView: UICollectionView = {
         let cv = UICollectionView(
@@ -56,6 +62,7 @@ class CartViewController: UIViewController {
         view.addSubview(checkoutButton)
         view.addSubview(totalLabel)
         view.addSubview(priceLabel)
+        view.addSubview(emptyView)
         
         setupUI()
         setupCollectionView()
@@ -69,6 +76,10 @@ class CartViewController: UIViewController {
             loadingView.frame = keyWindow.bounds
             keyWindow.addSubview(loadingView)
         }
+        
+        emptyView.onAction = { [weak self] in
+            self?.navigationController?.tabBarController?.selectedIndex = 1
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -80,18 +91,15 @@ class CartViewController: UIViewController {
                     self?.showAlert(title: "Error", message: errorString)
                 }
                 else {
-                    if let isCartEmpty = isCartEmpty {
+                    if var isCartEmpty = isCartEmpty {
                         if !isCartEmpty {
                             self?.collectionView.reloadData()
                             self?.priceLabel.text = "$\(String(self?.viewModel.cart?.total ?? 0).replacingOccurrences(of: ".0", with: ""))"
                             self?.checkoutButton.setTitle("Checkout (\(self?.viewModel.cart?.totalProducts ?? 0))", for: .normal)
-                            self?.collectionView.isHidden = false
-                            self?.totalLabel.isHidden = false
-                            self?.priceLabel.isHidden = false
-                            self?.checkoutButton.isHidden = false
+                            self?.hideOrDisplay(isEmpty: isCartEmpty)
                         }
                         else {
-                            
+                            self?.hideOrDisplay(isEmpty: isCartEmpty)
                         }
                     }
                 }
@@ -110,13 +118,22 @@ class CartViewController: UIViewController {
         totalLabel.isHidden = true
         priceLabel.isHidden = true
         checkoutButton.isHidden = true
+        emptyView.isHidden = true
+    }
+    
+    internal func hideOrDisplay(isEmpty: Bool) {
+        collectionView.isHidden = isEmpty
+        totalLabel.isHidden = isEmpty
+        priceLabel.isHidden = isEmpty
+        checkoutButton.isHidden = isEmpty
+        emptyView.isHidden = !isEmpty
     }
     
     private func setupUI() {
         spinner.snp.makeConstraints { $0.center.equalToSuperview() }
         checkoutButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
-            make.width.equalToSuperview().offset(-16)
+            make.width.equalToSuperview().inset(16)
             make.height.equalTo(60)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-12)
         }
@@ -134,5 +151,6 @@ class CartViewController: UIViewController {
             make.top.equalToSuperview()
             make.bottom.equalTo(totalLabel.snp.top).offset(-24)
         }
+        emptyView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges) }
     }
 }
