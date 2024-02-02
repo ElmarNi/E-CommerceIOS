@@ -52,7 +52,6 @@ class StatusView: UIView {
         mainFrame.addSubview(button)
         isHidden = true
         setupUI()
-        
         button.addTarget(self, action: #selector(buttontapped), for: .touchUpInside)
     }
     
