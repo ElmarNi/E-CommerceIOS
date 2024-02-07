@@ -19,7 +19,6 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubview(titleLabel)
-        backgroundColor = .red
         titleLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
         }

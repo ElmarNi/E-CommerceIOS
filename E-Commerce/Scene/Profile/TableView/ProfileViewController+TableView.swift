@@ -26,8 +26,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch viewModel.sections[section] {
-        case let .personalInformation(data), let .supportAndInformation(data), let .accountManagment(data):
-            data.count
+        case let .personalInformation(data), let .accountManagment(data):
+            return data.count
+        case let .supportAndInformation(data):
+            return data.count
         }
     }
     
@@ -35,8 +37,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as? ProfileTableViewCell
         else { return UITableViewCell() }
         switch viewModel.sections[indexPath.section] {
-        case let .personalInformation(data), let .supportAndInformation(data), let .accountManagment(data):
+        case let .personalInformation(data), let .accountManagment(data):
             cell.configure(title: data[indexPath.row])
+        case let .supportAndInformation(data):
+            cell.configure(title: data[indexPath.row].key)
         }
         return cell
     }
@@ -47,8 +51,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case let .personalInformation(data):
             break
         case let .supportAndInformation(data):
-            let profileSupportViewController = ProfileSupportViewController()
-            profileSupportViewController.title = data[indexPath.row]
+            let profileSupportViewController = ProfileSupportViewController(data: data[indexPath.row].value,
+                                                                            isFAQ: data[indexPath.row].key.lowercased().contains("faq"))
+            profileSupportViewController.title = data[indexPath.row].key
             navigationController?.pushViewController(profileSupportViewController, animated: true)
         case let .accountManagment(data):
             break

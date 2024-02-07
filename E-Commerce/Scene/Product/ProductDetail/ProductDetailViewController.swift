@@ -214,7 +214,7 @@ class ProductDetailViewController: UIViewController {
                         self?.showAlert(title: "Error", message: "Can't add to cart, please try again")
                     }
                     else {
-                        if var isCartEmpty = isCartEmpty {
+                        if let isCartEmpty = isCartEmpty {
                             let products = [CartProduct(id: self?.product.id ?? 0,
                                                         title: nil,
                                                         quantity: quantity,
