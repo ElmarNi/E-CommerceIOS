@@ -8,9 +8,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     private let mainFrame = UIView()
-    private let layer = LoadingView()
+    private let loadingView = LoadingView()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -57,7 +57,6 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = .black
         navigationItem.titleView = LogoTitleView()
-        
         mainFrame.addSubview(titleLabel)
         mainFrame.addSubview(haveAccountLabel)
         mainFrame.addSubview(signupButton)
@@ -68,7 +67,7 @@ class LoginViewController: UIViewController {
         passwordTextField.addSubview(toggleButton)
         mainFrame.addSubview(loginButton)
         view.addSubview(mainFrame)
-        view.addSubview(layer)
+        view.addSubview(loadingView)
         
         for case let textField as UITextField in mainFrame.subviews {
             textField.delegate = self
@@ -89,7 +88,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func togglePasswordVisibility() {
-        passwordTextField.isSecureTextEntry.toggle()
+        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
         toggleButton.isSelected = !passwordTextField.isSecureTextEntry
     }
     
@@ -98,22 +97,29 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginButtonTapped() {
-        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespaces),
+        guard let username = usernameTextField.text,
               let password = passwordTextField.text
         else { return }
         
-        layer.isHidden = false
+        loadingView.isHidden = false
         
         DispatchQueue.main.async {[weak self] in
             self?.viewModel.login(sessionDelegate: self, username: username, password: password) {[weak self] success in
                 if success {
+                    guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+                    
+                    let tabBarController = TabBarController()
+                    sceneDelegate.window?.rootViewController = tabBarController
+                    
+                    if let navigationController = tabBarController.navigationController {
+                        navigationController.popToRootViewController(animated: false)
+                    }
                     UserDefaults.standard.setValue(true, forKey: "isLaunched")
-                    self?.navigationController?.viewControllers = [TabBarController()]
                 }
                 else {
                     self?.showAlert(title: "Error", message: "Username or Passowrd is wrong")
                 }
-                self?.layer.isHidden = true
+                self?.loadingView.isHidden = true
             }
         }
     }
@@ -172,9 +178,9 @@ class LoginViewController: UIViewController {
             make.height.equalTo(60)
         }
         
-        layer.snp.makeConstraints { $0.left.right.top.bottom.equalToSuperview() }
+        loadingView.snp.makeConstraints { $0.left.right.top.bottom.equalToSuperview() }
     }
-
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {

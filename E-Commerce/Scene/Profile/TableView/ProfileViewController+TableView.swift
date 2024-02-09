@@ -55,8 +55,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                                                                             isFAQ: data[indexPath.row].key.lowercased().contains("faq"))
             profileSupportViewController.title = data[indexPath.row].key
             navigationController?.pushViewController(profileSupportViewController, animated: true)
-        case let .accountManagment(data):
-            break
+        case .accountManagment(_):
+            navigationController?.pushViewController(ChangePasswordViewController(), animated: true)
         }
     }
     

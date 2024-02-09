@@ -18,6 +18,7 @@ final class LoginViewModel {
             case .success(let result):
                 UserDefaults.standard.setValue(result.token, forKey: "token")
                 UserDefaults.standard.setValue(result.id, forKey: "userID")
+                
                 completion(true)
             default: completion(false)
             }

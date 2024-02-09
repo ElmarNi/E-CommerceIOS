@@ -26,6 +26,8 @@
 		EB2D39A12B65904C00697DF4 /* CartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D39A02B65904C00697DF4 /* CartCollectionViewCell.swift */; };
 		EB3E25A82B40728100B6AF49 /* EntryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E25A72B40728100B6AF49 /* EntryPage.swift */; };
 		EB4DC9AC2B361B4500005385 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4DC9AB2B361B4500005385 /* Login.swift */; };
+		EB5060A32B760DFD00D567EC /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5060A22B760DFD00D567EC /* ChangePasswordViewController.swift */; };
+		EB5060A52B7633B100D567EC /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5060A42B7633B100D567EC /* ChangePasswordViewModel.swift */; };
 		EB60FC8C2B1A17C0004DF45F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60FC8B2B1A17C0004DF45F /* AppDelegate.swift */; };
 		EB60FC8E2B1A17C0004DF45F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB60FC8D2B1A17C0004DF45F /* SceneDelegate.swift */; };
 		EB60FC952B1A17C2004DF45F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB60FC942B1A17C2004DF45F /* Assets.xcassets */; };
@@ -107,6 +109,8 @@
 		EB2D39A02B65904C00697DF4 /* CartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB3E25A72B40728100B6AF49 /* EntryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPage.swift; sourceTree = "<group>"; };
 		EB4DC9AB2B361B4500005385 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		EB5060A22B760DFD00D567EC /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		EB5060A42B7633B100D567EC /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		EB5675A72B67071000F63632 /* Design and API.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Design and API.md"; sourceTree = "<group>"; };
 		EB60FC882B1A17C0004DF45F /* E-Commerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Commerce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB60FC8B2B1A17C0004DF45F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 		EB13DA672B35A1210039541F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EB5060A12B760DF000D567EC /* ChangePassword */,
 				EB6AFD5F2B6D1E02009132D4 /* ProfileSupport */,
 				EB6AFD5C2B6D1259009132D4 /* TableView */,
 				EB9A582A2B21F0DD00FE585A /* ProfileViewController.swift */,
@@ -299,6 +304,15 @@
 				EB80A0F72B1E787C009EDF41 /* EntryPageViewController.swift */,
 			);
 			path = PageController;
+			sourceTree = "<group>";
+		};
+		EB5060A12B760DF000D567EC /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				EB5060A22B760DFD00D567EC /* ChangePasswordViewController.swift */,
+				EB5060A42B7633B100D567EC /* ChangePasswordViewModel.swift */,
+			);
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		EB60FC7F2B1A17C0004DF45F = {
@@ -669,6 +683,7 @@
 				EB60FC8C2B1A17C0004DF45F /* AppDelegate.swift in Sources */,
 				EBF2D3022B6B78EB00BE21FD /* ProfileViewModel.swift in Sources */,
 				EB2D39942B65897E00697DF4 /* ProductDetailViewModel.swift in Sources */,
+				EB5060A32B760DFD00D567EC /* ChangePasswordViewController.swift in Sources */,
 				EB6AFD612B6D1E1A009132D4 /* ProfileSupportViewController.swift in Sources */,
 				EBC033742B56843D009AE94E /* ProductsViewController+CollectionView.swift in Sources */,
 				EB04FD882B3AA36400E8D4AC /* TitleView.swift in Sources */,
@@ -682,6 +697,7 @@
 				EB80A0F82B1E787C009EDF41 /* EntryPageViewController.swift in Sources */,
 				EBDC66F62B60FC15005F5D98 /* ProductDetailViewController.swift in Sources */,
 				EB74E1422B359F1D0097CD7B /* SignUp.swift in Sources */,
+				EB5060A52B7633B100D567EC /* ChangePasswordViewModel.swift in Sources */,
 				EBAC61AE2B1F5B7700F18D31 /* LoginViewController.swift in Sources */,
 				EB66E73A2B35B321008D4AC3 /* Product.swift in Sources */,
 				EBB094112B4EB17C00CA75C7 /* CategoriesViewModel.swift in Sources */,

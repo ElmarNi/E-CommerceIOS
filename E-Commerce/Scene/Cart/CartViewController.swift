@@ -106,6 +106,10 @@ class CartViewController: UIViewController {
                 self?.spinner.stopAnimating()
             }
         }
+        else {
+            hideOrDisplay(isEmpty: true)
+            spinner.stopAnimating()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
         homeTitleView.profileButtonOnAction = {[weak self] in
             self?.navigationController?.tabBarController?.selectedIndex = 3
         }
-//        
+        
 //        UserDefaults.standard.setValue(nil, forKey: "token")
 //        UserDefaults.standard.setValue(nil, forKey: "userID")
 //        UserDefaults.standard.setValue(nil, forKey: "isLaunched")

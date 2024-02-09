@@ -104,6 +104,7 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func togglePasswordVisibility() {
+        view.endEditing(true)
         passwordTextField.isSecureTextEntry.toggle()
         toggleButton.isSelected = !passwordTextField.isSecureTextEntry
     }

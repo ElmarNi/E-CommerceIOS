@@ -47,6 +47,13 @@ class ProfileViewController: UIViewController {
         button.setImage(UIImage(named: "logout"), for: .normal)
         return button
     }()
+    private let loginButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Login", for: .normal)
+        btn.setTitleColor(.link, for: .normal)
+        btn.isHidden = true
+        return btn
+    }()
     internal let tableView = UITableView()
     
     override func viewDidLoad() {
@@ -62,16 +69,40 @@ class ProfileViewController: UIViewController {
         
         view.addSubview(titleView)
         view.addSubview(tableView)
+        view.addSubview(loginButton)
         view.addSubview(spinner)
         
         user()
         setupUI()
         configureTableView()
+        
+        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = UserDefaults.standard.value(forKey: "userID") != nil
+    }
+    
+    @objc private func logoutButtonTapped() {
+        UserDefaults.standard.setValue(nil, forKey: "token")
+        UserDefaults.standard.setValue(nil, forKey: "userID")
+        titleView.isHidden = true
+        tableView.isHidden = true
+        loginButton.isHidden = false
+        navigationController?.isNavigationBarHidden = false
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let statusBarFrame = windowScene.statusBarManager?.statusBarFrame {
+                let statusBarView = UIView(frame: statusBarFrame)
+                statusBarView.backgroundColor = .systemBackground
+                view.addSubview(statusBarView)
+            }
+        }
+    }
+    
+    @objc private func loginButtonTapped() {
+        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
     private func setupUI(){
@@ -103,6 +134,7 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.width.equalToSuperview()
         }
+        loginButton.snp.makeConstraints({$0.center.equalToSuperview()})
     }
     
     private func user() {
@@ -131,6 +163,10 @@ class ProfileViewController: UIViewController {
                 }
                 self?.spinner.stopAnimating()
             }
+        }
+        else {
+            loginButton.isHidden = false
+            spinner.stopAnimating()
         }
     }
     
