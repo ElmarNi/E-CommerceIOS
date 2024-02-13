@@ -10,10 +10,11 @@ import SnapKit
 
 class LoadingView: UIView {
     
-    private let spinner = Spinner(color: .white)
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private let spinner: Spinner
+    
+    init(spinner: Spinner = Spinner(color: .white)) {
+        self.spinner = spinner
+        super.init(frame: .zero)
         backgroundColor = .black.withAlphaComponent(0.8)
         isHidden = true
         addSubview(spinner)
@@ -25,4 +26,8 @@ class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func convertToDefault() {
+        backgroundColor = .black.withAlphaComponent(0.8)
+        spinner.color = .white
+    }
 }

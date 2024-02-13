@@ -84,11 +84,12 @@ class CyanButton: UIButton {
 }
 
 class ErrorLabel: UILabel {
-    init() {
+    init(text: String? = nil) {
         super.init(frame: .zero)
         self.font = UIFont(name: "PlusJakartaSans-SemiBold", size: 12)
         self.textColor = .red
         self.isHidden = true
+        self.text = text
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

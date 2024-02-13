@@ -152,7 +152,7 @@ final class ProfileViewModel {
     
     enum Section {
         case personalInformation(data: [String])
-        case supportAndInformation(rows: KeyValuePairs<String, KeyValuePairs<String, [String]>>)
+        case supportAndInformation(data: KeyValuePairs<String, KeyValuePairs<String, [String]>>)
         case accountManagment(data: [String])
         
         var title: String {
@@ -170,7 +170,7 @@ final class ProfileViewModel {
     
     init() {
         sections.append(.personalInformation(data: ["Shipping Address", "Payment Method"]))
-        sections.append(.supportAndInformation(rows: ["Privacy Policy": policyTexts, "Terms & Conditions": termsTexts, "FAQs": faqTexts]))
+        sections.append(.supportAndInformation(data: ["Privacy Policy": policyTexts, "Terms & Conditions": termsTexts, "FAQs": faqTexts]))
         sections.append(.accountManagment(data: ["Change Password"]))
     }
     

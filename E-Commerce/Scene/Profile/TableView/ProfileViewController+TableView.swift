@@ -48,8 +48,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch viewModel.sections[indexPath.section] {
-        case let .personalInformation(data):
-            break
+        case .personalInformation(_):
+            switch indexPath.row {
+            case 0:
+                navigationController?.pushViewController(ShippingViewController(), animated: true)
+            default:
+                navigationController?.pushViewController(PaymentViewController(), animated: true)
+            }
         case let .supportAndInformation(data):
             let profileSupportViewController = ProfileSupportViewController(data: data[indexPath.row].value,
                                                                             isFAQ: data[indexPath.row].key.lowercased().contains("faq"))

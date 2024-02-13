@@ -36,13 +36,13 @@ class SignUpViewController: UIViewController {
     
     private let fullnameTextField = PaddedTextField(placeholder: "Enter your fullname")
     
-    private let fullnameError = ErrorLabel()
+    private let fullnameError = ErrorLabel(text: "Please enter a fullname")
     
     private let usernameLabel = UserLabel(text: "Username")
     
     private let usernameTextField = PaddedTextField(placeholder: "Enter your Username")
     
-    private let usernameError = ErrorLabel()
+    private let usernameError = ErrorLabel(text: "Please enter a username")
     
     private let passwordLabel = UserLabel(text: "Password")
     
@@ -123,23 +123,13 @@ class SignUpViewController: UIViewController {
         usernameError.isHidden = !username.isEmpty
         
         if fullname.isEmpty {
-            fullnameError.text = "Please enter a fullname"
             fullnameTextField.layer.borderColor = UIColor.red.cgColor
             isError = true
         }
-        else {
-            fullnameError.text = ""
-            fullnameTextField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
-        }
         
         if username.isEmpty {
-            usernameError.text = "Please enter a username"
             usernameTextField.layer.borderColor = UIColor.red.cgColor
             isError = true
-        }
-        else {
-            usernameError.text = ""
-            usernameTextField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
         }
         
         if password.isEmpty {
@@ -157,7 +147,6 @@ class SignUpViewController: UIViewController {
         else {
             passwordError.isHidden = true
             passwordError.text = ""
-            passwordTextField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
         }
         
         if !isError {

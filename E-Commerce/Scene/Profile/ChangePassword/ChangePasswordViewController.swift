@@ -15,7 +15,7 @@ class ChangePasswordViewController: UIViewController {
     
     private let newPasswordLabel = UserLabel(text: "New Password")
     private let newPasswordTextField = PaddedTextField(placeholder: "Enter your new password", isSecureTextEntry: true)
-    private let newPasswordError = ErrorLabel()
+    private let newPasswordError = ErrorLabel(text: "Please enter new password")
     
     private let confirmPasswordLabel = UserLabel(text: "Confirm Password")
     private let confirmPasswordTextField = PaddedTextField(placeholder: "Enter your new password", isSecureTextEntry: true)
@@ -54,18 +54,15 @@ class ChangePasswordViewController: UIViewController {
         view.endEditing(true)
         guard let confirmPassword = confirmPasswordTextField.text, let newPassword = newPasswordTextField.text else { return }
         var isError = false
-        newPasswordError.isHidden = true
-        confirmPasswordError.isHidden = true
+        newPasswordError.isHidden = !newPassword.isEmpty
+        confirmPasswordError.isHidden = !confirmPassword.isEmpty
         
         if newPassword.isEmpty {
-            newPasswordError.isHidden = false
-            newPasswordError.text = "Please enter new password"
             newPasswordTextField.layer.borderColor = UIColor.red.cgColor
             isError = true
         }
         
         if confirmPassword.isEmpty {
-            confirmPasswordError.isHidden = false
             confirmPasswordError.text = "Please enter new password"
             confirmPasswordTextField.layer.borderColor = UIColor.red.cgColor
             isError = true
@@ -81,12 +78,7 @@ class ChangePasswordViewController: UIViewController {
         if !isError, let userId = UserDefaults.standard.value(forKey: "userID") as? Int {
             loadingView.isHidden = false
             viewModel.changePassword(sessionDelegate: self, userID: userId, password: confirmPassword) {[weak self] isError, message in
-                if isError {
-                    self?.showAlert(title: "Error", message: message)
-                }
-                else {
-                    self?.showAlert(title: "Success", message: message)
-                }
+                self?.showAlert(title: isError ? "Error" : "Success", message: message)
                 self?.loadingView.isHidden = true
             }
         }
@@ -97,7 +89,6 @@ class ChangePasswordViewController: UIViewController {
     }
     
     private func setupUI() {
-        
         newPasswordLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
