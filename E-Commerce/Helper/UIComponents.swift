@@ -44,7 +44,7 @@ class PaddedTextField: UITextField {
         self.placeholder = placeholder
         self.layer.cornerRadius = 12
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1).cgColor
+        self.layer.borderColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1.00).cgColor
         self.font = UIFont(name: "PlusJakartaSans-Regular", size: 12)
     }
 }

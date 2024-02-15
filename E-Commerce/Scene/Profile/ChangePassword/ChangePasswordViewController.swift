@@ -142,7 +142,7 @@ extension ChangePasswordViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text, text.isEmpty else { return }
-        textField.layer.borderColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1).cgColor
+        textField.layer.borderColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1.00).cgColor
     }
     
 }

@@ -11,7 +11,7 @@ class ProfileSupportViewController: UIViewController {
     private let mainTextView: UITextView = {
         let tv = UITextView()
         tv.isEditable = false
-        tv.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 12, right: 16)
+        tv.contentInset = UIEdgeInsets(top: -20, left: 16, bottom: 12, right: 16)
         tv.isSelectable = false
         return tv
     }()

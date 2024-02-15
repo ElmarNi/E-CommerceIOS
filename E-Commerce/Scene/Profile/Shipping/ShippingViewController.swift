@@ -74,17 +74,9 @@ class ShippingViewController: UIViewController {
         cityError.isHidden = !city.isEmpty
         postalCodeError.isHidden = !postalCode.isEmpty
         
-        if address.isEmpty {
-            addressTextField.layer.borderColor = UIColor.red.cgColor
-        }
-        
-        if city.isEmpty {
-            cityTextField.layer.borderColor = UIColor.red.cgColor
-        }
-        
-        if postalCode.isEmpty {
-            postalCodeTextField.layer.borderColor = UIColor.red.cgColor
-        }
+        address.isEmpty ? addressTextField.layer.borderColor = UIColor.red.cgColor : nil
+        city.isEmpty ? cityTextField.layer.borderColor = UIColor.red.cgColor : nil
+        postalCode.isEmpty ? postalCodeTextField.layer.borderColor = UIColor.red.cgColor : nil
         
         if !address.isEmpty, !city.isEmpty, !postalCode.isEmpty {
             loadingView.convertToDefault()
@@ -185,7 +177,7 @@ class ShippingViewController: UIViewController {
                     if let subViews = self?.view.subviews {
                         for case let textField as UITextField in subViews {
                             if let text = textField.text, text.isEmpty {
-                                textField.layer.borderColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1).cgColor
+                                textField.layer.borderColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1.00).cgColor
                             }
                             else {
                                 textField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
@@ -210,7 +202,7 @@ extension ShippingViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text, text.isEmpty else { return }
-        textField.layer.borderColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1).cgColor
+        textField.layer.borderColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1.00).cgColor
     }
     
 }
