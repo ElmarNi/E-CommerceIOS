@@ -51,7 +51,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case .personalInformation(_):
             switch indexPath.row {
             case 0:
-                navigationController?.pushViewController(ShippingViewController(), animated: true)
+                let shippingVC = ShippingViewController()
+                shippingVC.title = "Shipping Address"
+                navigationController?.pushViewController(shippingVC, animated: true)
             default:
                 navigationController?.pushViewController(PaymentViewController(), animated: true)
             }

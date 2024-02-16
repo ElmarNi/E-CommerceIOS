@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 
 class ShippingViewController: UIViewController {
+    var onAction: ((Bool, String?) -> Void)? = nil
     private let viewModel = ShippingViewModel()
-    private var loadingView = LoadingView(spinner: Spinner(color: .systemGray))
+    private var loadingView = LoadingView()
     
     private let addressLabel = UserLabel(text: "Address")
     private let addressTextField = PaddedTextField(placeholder: "Enter your address")
@@ -28,7 +29,6 @@ class ShippingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Shipping Address"
         view.backgroundColor = .systemBackground
         
         view.addSubview(addressLabel)
@@ -79,13 +79,22 @@ class ShippingViewController: UIViewController {
         postalCode.isEmpty ? postalCodeTextField.layer.borderColor = UIColor.red.cgColor : nil
         
         if !address.isEmpty, !city.isEmpty, !postalCode.isEmpty {
-            loadingView.convertToDefault()
+            if onAction == nil {
+                loadingView.changeSpinnerAndBGColor(spinnerColor: .white, bgColor: .black.withAlphaComponent(0.8))
+            }
+            else {
+                loadingView.changeSpinnerAndBGColor(spinnerColor: .systemGray, bgColor: .white)
+            }
             loadingView.isHidden = false
-            
             if let userID = UserDefaults.standard.value(forKey: "userID") as? Int {
                 let address = Address(address: addressTextField.text ?? "", city: cityTextField.text ?? "", postalCode: postalCodeTextField.text ?? "")
                 viewModel.update(sessionDelegate: self, userID: userID, address: address) {[weak self] isError, message in
-                    self?.showAlert(title: isError ? "Error" : "Success", message: message)
+                    if let onAction = self?.onAction, !isError {
+                        onAction(!isError, message)
+                    }
+                    else {
+                        self?.showAlert(title: isError ? "Error" : "Success", message: message)
+                    }
                     self?.loadingView.isHidden = true
                 }
             }
@@ -95,11 +104,44 @@ class ShippingViewController: UIViewController {
         }
     }
     
+    private func address() {
+        loadingView.isHidden = false
+        loadingView.changeSpinnerAndBGColor(spinnerColor: .systemGray, bgColor: .systemBackground)
+        if let userID = UserDefaults.standard.value(forKey: "userID") as? Int {
+            viewModel.user(sessionDelegate: self, userID: userID) {[weak self] isError, errorString in
+                if isError {
+                    self?.showAlert(title: "Error", message: errorString)
+                }
+                else {
+                    self?.addressTextField.text = self?.viewModel.address?.address
+                    self?.cityTextField.text = self?.viewModel.address?.city
+                    self?.postalCodeTextField.text = self?.viewModel.address?.postalCode
+                    
+                    if let subViews = self?.view.subviews {
+                        for case let textField as UITextField in subViews {
+                            if let text = textField.text, text.isEmpty {
+                                textField.layer.borderColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1.00).cgColor
+                            }
+                            else {
+                                textField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
+                            }
+                        }
+                    }
+                }
+                self?.loadingView.isHidden = true
+            }
+        }
+        else {
+            loadingView.isHidden = true
+        }
+    }
+    
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
     private func setupUI() {
+        
         addressLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -161,37 +203,6 @@ class ShippingViewController: UIViewController {
         loadingView.snp.makeConstraints({$0.edges.equalToSuperview()})
     }
     
-    private func address() {
-        loadingView.isHidden = false
-        loadingView.backgroundColor = .systemBackground
-        if let userID = UserDefaults.standard.value(forKey: "userID") as? Int {
-            viewModel.user(sessionDelegate: self, userID: userID) {[weak self] isError, errorString in
-                if isError {
-                    self?.showAlert(title: "Error", message: errorString)
-                }
-                else {
-                    self?.addressTextField.text = self?.viewModel.address?.address
-                    self?.cityTextField.text = self?.viewModel.address?.city
-                    self?.postalCodeTextField.text = self?.viewModel.address?.postalCode
-                    
-                    if let subViews = self?.view.subviews {
-                        for case let textField as UITextField in subViews {
-                            if let text = textField.text, text.isEmpty {
-                                textField.layer.borderColor = UIColor(red: 0.96, green: 0.96, blue: 0.99, alpha: 1.00).cgColor
-                            }
-                            else {
-                                textField.layer.borderColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1).cgColor
-                            }
-                        }
-                    }
-                }
-                self?.loadingView.isHidden = true
-            }
-        }
-        else {
-            loadingView.isHidden = true
-        }
-    }
 }
 
 extension ShippingViewController: UITextFieldDelegate {

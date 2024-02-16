@@ -10,7 +10,7 @@ import Foundation
 final class CartViewModel {
     var cart: Cart?
     
-    func carts(sessionDelegate: URLSessionDelegate?, userId: Int, completion: @escaping (_ isError: Bool, _ errorString: String?, _ isCartEmpty: Bool?) -> Void) {
+    func cart(sessionDelegate: URLSessionDelegate?, userId: Int, completion: @escaping (_ isError: Bool, _ errorString: String?, _ isCartEmpty: Bool?) -> Void) {
         DispatchQueue.main.async {[weak self] in
             NetworkManager.shared.request(sessionDelegate: sessionDelegate,
                                           requestBody: nil,

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    func download(from url: URL, sessionDelegate: URLSessionDelegate?, completion: (() -> Void)? = nil) {
+    func download(from url: URL, sessionDelegate: URLSessionDelegate?, completion: @escaping () -> Void) {
         DispatchQueue.main.async {
             URLSession(
                 configuration: URLSessionConfiguration.default,
@@ -23,11 +23,11 @@ extension UIImageView {
                     let image = UIImage(data: data)
                 else {
                     self.image = UIImage(named: "no-image")
-                    completion?()
+                    completion()
                     return
                 }
                 self.image = image
-                completion?()
+                completion()
             }.resume()
         }
     }

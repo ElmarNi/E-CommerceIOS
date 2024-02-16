@@ -40,6 +40,8 @@
 		EB66E73C2B35B8C9008D4AC3 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB66E73B2B35B8C9008D4AC3 /* ProductsResponse.swift */; };
 		EB6AFD5B2B6D0510009132D4 /* ProfileViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AFD5A2B6D0510009132D4 /* ProfileViewController+TableView.swift */; };
 		EB6AFD612B6D1E1A009132D4 /* ProfileSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6AFD602B6D1E1A009132D4 /* ProfileSupportViewController.swift */; };
+		EB6B59522B7F88E000589DC4 /* CheckoutIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B59512B7F88E000589DC4 /* CheckoutIconView.swift */; };
+		EB6B59542B7F914600589DC4 /* UIImageView+ChangeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B59532B7F914600589DC4 /* UIImageView+ChangeColor.swift */; };
 		EB74E1202B356E720097CD7B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E11F2B356E710097CD7B /* LoginViewModel.swift */; };
 		EB74E1252B356EE00097CD7B /* UIImageView+download.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E1242B356EE00097CD7B /* UIImageView+download.swift */; };
 		EB74E1272B356F210097CD7B /* UIViewController+showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E1262B356F210097CD7B /* UIViewController+showAlert.swift */; };
@@ -130,6 +132,8 @@
 		EB66E73B2B35B8C9008D4AC3 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
 		EB6AFD5A2B6D0510009132D4 /* ProfileViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+TableView.swift"; sourceTree = "<group>"; };
 		EB6AFD602B6D1E1A009132D4 /* ProfileSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSupportViewController.swift; sourceTree = "<group>"; };
+		EB6B59512B7F88E000589DC4 /* CheckoutIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutIconView.swift; sourceTree = "<group>"; };
+		EB6B59532B7F914600589DC4 /* UIImageView+ChangeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ChangeColor.swift"; sourceTree = "<group>"; };
 		EB74E11F2B356E710097CD7B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EB74E1242B356EE00097CD7B /* UIImageView+download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+download.swift"; sourceTree = "<group>"; };
 		EB74E1262B356F210097CD7B /* UIViewController+showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showAlert.swift"; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		EB13DA662B35A11A0039541F /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				EB6B594E2B7F880E00589DC4 /* Checkout */,
 				EB9A58282B21F05800FE585A /* CartViewController.swift */,
 				EB2D399C2B658B5800697DF4 /* CartViewModel.swift */,
 				EB2D399E2B658D4000697DF4 /* CartViewController+CollectionView.swift */,
@@ -421,6 +426,14 @@
 			path = ProfileSupport;
 			sourceTree = "<group>";
 		};
+		EB6B594E2B7F880E00589DC4 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				EB6B59512B7F88E000589DC4 /* CheckoutIconView.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
 		EB74E11D2B356E1D0097CD7B /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +472,7 @@
 				EB74E1262B356F210097CD7B /* UIViewController+showAlert.swift */,
 				EBEC7C772B20C42A00735E2F /* UIComponents.swift */,
 				EB04FD8D2B3B07D800E8D4AC /* SessionDelegate.swift */,
+				EB6B59532B7F914600589DC4 /* UIImageView+ChangeColor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -683,6 +697,7 @@
 				EBF2D3042B6B86ED00BE21FD /* ProfileTableViewCell.swift in Sources */,
 				EB74E1272B356F210097CD7B /* UIViewController+showAlert.swift in Sources */,
 				EBEC7C782B20C42A00735E2F /* UIComponents.swift in Sources */,
+				EB6B59522B7F88E000589DC4 /* CheckoutIconView.swift in Sources */,
 				EBAC61B32B1F5D1C00F18D31 /* LogoTitleView.swift in Sources */,
 				EB2D39962B658A5600697DF4 /* Cart.swift in Sources */,
 				EB2D39982B658AB100697DF4 /* CartProduct.swift in Sources */,
@@ -696,6 +711,7 @@
 				EBDC66F92B60FFEA005F5D98 /* ProductDetailViewController+CollectionView.swift in Sources */,
 				EB80A0FA2B1E788B009EDF41 /* PageRootViewController.swift in Sources */,
 				EB8C2C7E2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift in Sources */,
+				EB6B59542B7F914600589DC4 /* UIImageView+ChangeColor.swift in Sources */,
 				EB6AFD5B2B6D0510009132D4 /* ProfileViewController+TableView.swift in Sources */,
 				EB9B7A912B590405003BFC68 /* SearchView.swift in Sources */,
 				EBBEFEBA2B6A843700F5EDC6 /* CheckoutViewController.swift in Sources */,

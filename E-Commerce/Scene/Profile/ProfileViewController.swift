@@ -159,7 +159,7 @@ class ProfileViewController: UIViewController {
                     }
                     
                     guard let url = URL(string: self?.viewModel.user?.image ?? "") else { return }
-                    self?.profileImageView.download(from: url, sessionDelegate: self)
+                    self?.profileImageView.download(from: url, sessionDelegate: self) {}
                 }
                 self?.spinner.stopAnimating()
             }

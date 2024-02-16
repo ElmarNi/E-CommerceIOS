@@ -209,7 +209,7 @@ class ProductDetailViewController: UIViewController {
         {
             if let userId = UserDefaults.standard.value(forKey: "userID") as? Int {
                 loadingView.isHidden = false
-                viewModel.carts(sessionDelegate: self, userId: userId) {[weak self] isError, errorString, isCartEmpty in
+                viewModel.cart(sessionDelegate: self, userId: userId) {[weak self] isError, errorString, isCartEmpty in
                     if isError {
                         self?.showAlert(title: "Error", message: "Can't add to cart, please try again")
                     }
