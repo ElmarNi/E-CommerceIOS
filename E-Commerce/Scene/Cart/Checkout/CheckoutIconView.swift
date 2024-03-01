@@ -86,6 +86,13 @@ class CheckoutIconView: UIView {
             paymentLabel.textColor = .black
             shippingIcon.image = UIImage(named: "box-colored")
             paymentcon.setImageColor(color: .black)
+        case 2:
+            shippingLabel.textColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1.00)
+            paymentLabel.textColor = UIColor(red: 0.13, green: 0.83, blue: 0.71, alpha: 1.00)
+            reviewLabel.textColor = .black
+            shippingIcon.image = UIImage(named: "box-colored")
+            paymentcon.image = UIImage(named: "card-tick-colored")
+            reviewIcon.setImageColor(color: .black)
         default:
             break
         }

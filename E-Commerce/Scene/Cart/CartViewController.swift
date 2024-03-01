@@ -94,6 +94,7 @@ class CartViewController: UIViewController {
         priceLabel.text = nil
         collectionView.reloadData()
         
+        loadingView.isHidden = true
         collectionView.isHidden = true
         totalLabel.isHidden = true
         priceLabel.isHidden = true
@@ -112,20 +113,27 @@ class CartViewController: UIViewController {
     @objc private func checkoutButtonTapped() {
         let shippingVC = ShippingViewController()
         let paymentVC = PaymentViewController()
+        let reviewVC = ReviewViewController()
+        
         checkOutControllerCreator(step: 0, secondController: shippingVC)
         
         shippingVC.onAction = {[weak self] success, message in
             success ? self?.checkOutControllerCreator(step: 1, secondController: paymentVC) : self?.showAlert(title: "Error", message: message)
-            self?.loadingView.isHidden = true
+        }
+        
+        paymentVC.onAction = {[weak self] success, message in
+            success ? self?.checkOutControllerCreator(step: 2, secondController: reviewVC) : self?.showAlert(title: "Error", message: message)
         }
     }
     
     private func checkOutControllerCreator(step: Int, secondController: UIViewController) {
         let container = UIViewController()
+        
         container.view.backgroundColor = .systemBackground
         switch step {
         case 0: container.title = "Shipping"
         case 1: container.title = "Payment"
+        case 2: container.title = "Review"
         default:
             break
         }
@@ -142,9 +150,11 @@ class CartViewController: UIViewController {
         }
         
         secondController.view.snp.makeConstraints { make in
-            make.top.equalTo(checkoutIconView.snp.bottom).offset(16)
-            make.left.width.bottom.equalToSuperview()
+            make.top.equalTo(checkoutIconView.snp.bottom).offset(8)
+            make.left.width.equalToSuperview()
+            make.bottom.equalTo(container.view.safeAreaLayoutGuide.snp.bottom)
         }
+        
         navigationController?.pushViewController(container, animated: true)
     }
     

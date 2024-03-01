@@ -54,20 +54,16 @@ final class NetworkManager {
                 completion(.failure(.error))
                 return
             }
-            self.handleResponse(data: data) { response in
-                completion(response)
+            
+            do {
+                let result = try JSONDecoder().decode(T.self, from: data)
+                completion(.success(result))
+            }
+            catch {
+                completion(.failure(.error))
             }
             
         }.resume()
     }
     
-    private func handleResponse<T: Codable> (data: Data, completion: @escaping (Result<T, ErrorType>) -> Void) {
-        do {
-            let result = try JSONDecoder().decode(T.self, from: data)
-            completion(.success(result))
-        }
-        catch {
-            completion(.failure(.error))
-        }
-    }
 }

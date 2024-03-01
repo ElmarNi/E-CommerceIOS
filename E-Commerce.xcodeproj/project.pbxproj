@@ -28,7 +28,11 @@
 		EB3A02342B7645B60028172C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A02332B7645B60028172C /* PaymentViewController.swift */; };
 		EB3A02362B7646A20028172C /* ShippingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A02352B7646A20028172C /* ShippingViewModel.swift */; };
 		EB3A02382B76471F0028172C /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A02372B76471F0028172C /* Address.swift */; };
+		EB3A62A22B90ACF800E57CB2 /* ReviewViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A62A12B90ACF800E57CB2 /* ReviewViewController+UITableView.swift */; };
+		EB3A62A62B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A62A52B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift */; };
+		EB3A62A82B90B41B00E57CB2 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A62A72B90B41B00E57CB2 /* ReviewTableViewCell.swift */; };
 		EB3E25A82B40728100B6AF49 /* EntryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E25A72B40728100B6AF49 /* EntryPage.swift */; };
+		EB3F2C2E2B91BC2200219A8F /* ReviewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3F2C2D2B91BC2200219A8F /* ReviewTableHeaderView.swift */; };
 		EB4DC9AC2B361B4500005385 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4DC9AB2B361B4500005385 /* Login.swift */; };
 		EB5060A32B760DFD00D567EC /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5060A22B760DFD00D567EC /* ChangePasswordViewController.swift */; };
 		EB5060A52B7633B100D567EC /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5060A42B7633B100D567EC /* ChangePasswordViewModel.swift */; };
@@ -50,6 +54,7 @@
 		EB74E1422B359F1D0097CD7B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74E1412B359F1D0097CD7B /* SignUp.swift */; };
 		EB80A0F82B1E787C009EDF41 /* EntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80A0F72B1E787C009EDF41 /* EntryPageViewController.swift */; };
 		EB80A0FA2B1E788B009EDF41 /* PageRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB80A0F92B1E788B009EDF41 /* PageRootViewController.swift */; };
+		EB86FEBC2B834315002EB1CD /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86FEBB2B834315002EB1CD /* ReviewViewController.swift */; };
 		EB8C2C7E2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C2C7D2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift */; };
 		EB8C2C8D2B500704001EDDF2 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C7F2B500703001EDDF2 /* PlusJakartaSans-Regular.ttf */; };
 		EB8C2C8E2B500704001EDDF2 /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB8C2C802B500703001EDDF2 /* PlusJakartaSans-ExtraBold.ttf */; };
@@ -117,7 +122,11 @@
 		EB3A02332B7645B60028172C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		EB3A02352B7646A20028172C /* ShippingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingViewModel.swift; sourceTree = "<group>"; };
 		EB3A02372B76471F0028172C /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		EB3A62A12B90ACF800E57CB2 /* ReviewViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReviewViewController+UITableView.swift"; sourceTree = "<group>"; };
+		EB3A62A52B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemsTableViewCell.swift; sourceTree = "<group>"; };
+		EB3A62A72B90B41B00E57CB2 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		EB3E25A72B40728100B6AF49 /* EntryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPage.swift; sourceTree = "<group>"; };
+		EB3F2C2D2B91BC2200219A8F /* ReviewTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableHeaderView.swift; sourceTree = "<group>"; };
 		EB4DC9AB2B361B4500005385 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		EB5060A22B760DFD00D567EC /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		EB5060A42B7633B100D567EC /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +151,7 @@
 		EB74E1412B359F1D0097CD7B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		EB80A0F72B1E787C009EDF41 /* EntryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPageViewController.swift; sourceTree = "<group>"; };
 		EB80A0F92B1E788B009EDF41 /* PageRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageRootViewController.swift; sourceTree = "<group>"; };
+		EB86FEBB2B834315002EB1CD /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		EB8C2C7D2B500185001EDDF2 /* CategoriesViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		EB8C2C7F2B500703001EDDF2 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
 		EB8C2C802B500703001EDDF2 /* PlusJakartaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -429,6 +439,7 @@
 		EB6B594E2B7F880E00589DC4 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				EB86FEBD2B836EBB002EB1CD /* Review */,
 				EB6B59512B7F88E000589DC4 /* CheckoutIconView.swift */,
 			);
 			path = Checkout;
@@ -508,6 +519,18 @@
 				EBB8FF6E2B1DB8DC0001AFF9 /* EntryViewController.swift */,
 			);
 			path = EntryPage;
+			sourceTree = "<group>";
+		};
+		EB86FEBD2B836EBB002EB1CD /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				EB86FEBB2B834315002EB1CD /* ReviewViewController.swift */,
+				EB3A62A12B90ACF800E57CB2 /* ReviewViewController+UITableView.swift */,
+				EB3A62A52B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift */,
+				EB3A62A72B90B41B00E57CB2 /* ReviewTableViewCell.swift */,
+				EB3F2C2D2B91BC2200219A8F /* ReviewTableHeaderView.swift */,
+			);
+			path = Review;
 			sourceTree = "<group>";
 		};
 		EB9849E82B5E5A930036095C /* Filter */ = {
@@ -703,6 +726,7 @@
 				EB2D39982B658AB100697DF4 /* CartProduct.swift in Sources */,
 				EB3A02342B7645B60028172C /* PaymentViewController.swift in Sources */,
 				EBC49A3E2B5128C800395565 /* ProductsViewModel.swift in Sources */,
+				EB3A62A82B90B41B00E57CB2 /* ReviewTableViewCell.swift in Sources */,
 				EBBF8E2B2B28498E00CD3480 /* HomeTitleView.swift in Sources */,
 				EB04FD8C2B3AE02200E8D4AC /* ProductCollectionViewCell.swift in Sources */,
 				EB74E1402B359EDC0097CD7B /* SignUpViewModel.swift in Sources */,
@@ -715,7 +739,9 @@
 				EB6AFD5B2B6D0510009132D4 /* ProfileViewController+TableView.swift in Sources */,
 				EB9B7A912B590405003BFC68 /* SearchView.swift in Sources */,
 				EBBEFEBA2B6A843700F5EDC6 /* CheckoutViewController.swift in Sources */,
+				EB86FEBC2B834315002EB1CD /* ReviewViewController.swift in Sources */,
 				EB2D39A12B65904C00697DF4 /* CartCollectionViewCell.swift in Sources */,
+				EB3A62A22B90ACF800E57CB2 /* ReviewViewController+UITableView.swift in Sources */,
 				EB4DC9AC2B361B4500005385 /* Login.swift in Sources */,
 				EB2D399D2B658B5800697DF4 /* CartViewModel.swift in Sources */,
 				EB2D39922B65883700697DF4 /* LoadingView.swift in Sources */,
@@ -733,6 +759,7 @@
 				EB5060A32B760DFD00D567EC /* ChangePasswordViewController.swift in Sources */,
 				EB6AFD612B6D1E1A009132D4 /* ProfileSupportViewController.swift in Sources */,
 				EBC033742B56843D009AE94E /* ProductsViewController+CollectionView.swift in Sources */,
+				EB3F2C2E2B91BC2200219A8F /* ReviewTableHeaderView.swift in Sources */,
 				EB04FD882B3AA36400E8D4AC /* TitleView.swift in Sources */,
 				EB3E25A82B40728100B6AF49 /* EntryPage.swift in Sources */,
 				EBF2D3062B6BD12E00BE21FD /* ProfileTableHeaderView.swift in Sources */,
@@ -747,6 +774,7 @@
 				EB5060A52B7633B100D567EC /* ChangePasswordViewModel.swift in Sources */,
 				EBAC61AE2B1F5B7700F18D31 /* LoginViewController.swift in Sources */,
 				EB66E73A2B35B321008D4AC3 /* Product.swift in Sources */,
+				EB3A62A62B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift in Sources */,
 				EBB094112B4EB17C00CA75C7 /* CategoriesViewModel.swift in Sources */,
 				EB2C6FB42B5EB58300DD0901 /* FilterTableViewCell.swift in Sources */,
 				EBB094132B4EBA8800CA75C7 /* HomeViewController+CollectionView.swift in Sources */,

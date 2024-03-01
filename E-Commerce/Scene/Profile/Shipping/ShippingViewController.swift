@@ -79,13 +79,10 @@ class ShippingViewController: UIViewController {
         postalCode.isEmpty ? postalCodeTextField.layer.borderColor = UIColor.red.cgColor : nil
         
         if !address.isEmpty, !city.isEmpty, !postalCode.isEmpty {
-            if onAction == nil {
-                loadingView.changeSpinnerAndBGColor(spinnerColor: .white, bgColor: .black.withAlphaComponent(0.8))
-            }
-            else {
-                loadingView.changeSpinnerAndBGColor(spinnerColor: .systemGray, bgColor: .white)
-            }
+            
+            onAction == nil ? loadingView.changeSpinnerAndBGColor(spinnerColor: .white, bgColor: .black.withAlphaComponent(0.8)) : nil
             loadingView.isHidden = false
+            
             if let userID = UserDefaults.standard.value(forKey: "userID") as? Int {
                 let address = Address(address: addressTextField.text ?? "", city: cityTextField.text ?? "", postalCode: postalCodeTextField.text ?? "")
                 viewModel.update(sessionDelegate: self, userID: userID, address: address) {[weak self] isError, message in
@@ -105,8 +102,8 @@ class ShippingViewController: UIViewController {
     }
     
     private func address() {
-        loadingView.isHidden = false
         loadingView.changeSpinnerAndBGColor(spinnerColor: .systemGray, bgColor: .systemBackground)
+        loadingView.isHidden = false
         if let userID = UserDefaults.standard.value(forKey: "userID") as? Int {
             viewModel.user(sessionDelegate: self, userID: userID) {[weak self] isError, errorString in
                 if isError {

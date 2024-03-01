@@ -8,7 +8,7 @@
 import UIKit
 
 class PaymentViewController: UIViewController {
-    
+    var onAction: ((Bool, String?) -> Void)? = nil
     private let cardHolderNameLabel = UserLabel(text: "Card Holder Name")
     private let cardHolderNameTextField = PaddedTextField(placeholder: "Enter card holder name")
     private let cardHolderNameError = ErrorLabel(text: "Please enter card holder name")
@@ -26,6 +26,7 @@ class PaymentViewController: UIViewController {
     private let cvvError = ErrorLabel()
     
     private let saveButton = RoundedButton(title: "Save")
+    private var loadingView = LoadingView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class PaymentViewController: UIViewController {
         view.addSubview(cvvError)
         
         view.addSubview(saveButton)
+        view.addSubview(loadingView)
         
         cardNumberTextField.keyboardType = .numberPad
         cardNumberTextField.tag = 0
@@ -56,6 +58,7 @@ class PaymentViewController: UIViewController {
         cvvTextField.keyboardType = .numberPad
         cvvTextField.tag = 2
         setupUI()
+        payment()
         
         for case let textField as UITextField in view.subviews {
             textField.delegate = self
@@ -125,8 +128,23 @@ class PaymentViewController: UIViewController {
             isError = true
         }
         
-        if !isError {
-            //api
+        if isError {
+            if onAction == nil {
+                loadingView.changeSpinnerAndBGColor(spinnerColor: .white, bgColor: .black.withAlphaComponent(0.8))
+            }
+            else {
+                loadingView.changeSpinnerAndBGColor(spinnerColor: .systemGray, bgColor: .white)
+            }
+            loadingView.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[weak self] in
+                self?.loadingView.isHidden = true
+                if let onAction = self?.onAction {
+                    onAction(true, "Payment method succesfully changed")
+                }
+                else {
+                    self?.showAlert(title: "Success", message: "Payment method succesfully changed")
+                }
+            }
         }
     }
     
@@ -158,6 +176,14 @@ class PaymentViewController: UIViewController {
         }
         
         return nil
+    }
+    
+    private func payment() {
+        loadingView.changeSpinnerAndBGColor(spinnerColor: .systemGray, bgColor: .systemBackground)
+        loadingView.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[weak self] in
+            self?.loadingView.isHidden = true
+        }
     }
     
     private func setupUI() {
@@ -238,7 +264,7 @@ class PaymentViewController: UIViewController {
             make.height.equalTo(60)
         }
         
-//        loadingView.snp.makeConstraints({$0.edges.equalToSuperview()})
+        loadingView.snp.makeConstraints({$0.edges.equalToSuperview()})
     }
     
 }

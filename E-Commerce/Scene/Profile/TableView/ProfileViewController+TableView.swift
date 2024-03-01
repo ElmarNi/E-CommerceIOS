@@ -77,4 +77,3 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-
