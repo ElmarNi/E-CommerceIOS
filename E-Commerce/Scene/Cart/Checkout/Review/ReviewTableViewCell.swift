@@ -28,6 +28,7 @@ class ReviewTableViewCell: UITableViewCell {
         addSubview(leftSide)
         addSubview(rightSide)
         setupUI()
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {

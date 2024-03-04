@@ -86,7 +86,7 @@ final class CartViewModel {
                                           method: .POST)
             { response in
                 switch response {
-                case .success(let result):
+                case .success(_):
                     completion(false, nil)
                 default:
                     completion(true, "Can't add to cart, please try again")

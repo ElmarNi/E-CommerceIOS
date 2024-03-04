@@ -128,7 +128,7 @@ class PaymentViewController: UIViewController {
             isError = true
         }
         
-        if isError {
+        if !isError {
             if onAction == nil {
                 loadingView.changeSpinnerAndBGColor(spinnerColor: .white, bgColor: .black.withAlphaComponent(0.8))
             }

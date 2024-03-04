@@ -16,6 +16,7 @@ class ReviewViewController: UIViewController {
     internal var userData = [String:String]()
     internal var orderData = [String:String]()
     private let placeOrderButton = RoundedButton(title: "Place Order")
+    var onaction: () -> Void = {}
     
     private let loadingView: LoadingView = {
         let lv = LoadingView()
@@ -38,7 +39,8 @@ class ReviewViewController: UIViewController {
     }
     
     @objc private func placeOrderButtonTapped() {
-        
+        loadingView.isHidden = false
+        onaction()
     }
     
     private func data() {

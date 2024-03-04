@@ -16,6 +16,11 @@ class CartViewController: UIViewController {
                                        buttonTitle: "Explore Categories", 
                                        image: UIImage(named: "cart"))
     
+    private let paymentSuccessView = StatusView(title: "Your order has been placed successfully",
+                                         description: "Thank you for choosing us! Feel free to continue shopping and explore our wide range of products. Happy Shopping!",
+                                         buttonTitle: "Continue Shopping",
+                                         image: UIImage(named: "shopping"))
+    
     internal let collectionView: UICollectionView = {
         let cv = UICollectionView(
             frame: .zero,
@@ -55,11 +60,13 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Cart"
+        paymentSuccessView.backgroundColor = .systemBackground
         view.addSubview(collectionView)
         view.addSubview(checkoutButton)
         view.addSubview(totalLabel)
         view.addSubview(priceLabel)
         view.addSubview(emptyView)
+        view.addSubview(paymentSuccessView)
         view.addSubview(loadingView)
         view.bringSubviewToFront(loadingView)
         loadingView.changeSpinnerAndBGColor(spinnerColor: .systemGray, bgColor: .systemBackground)
@@ -77,6 +84,9 @@ class CartViewController: UIViewController {
 //        }
         
         emptyView.onAction = { [weak self] in
+            self?.navigationController?.tabBarController?.selectedIndex = 1
+        }
+        paymentSuccessView.onAction = { [weak self] in
             self?.navigationController?.tabBarController?.selectedIndex = 1
         }
         checkoutButton.addTarget(self, action: #selector(checkoutButtonTapped), for: .touchUpInside)
@@ -100,6 +110,7 @@ class CartViewController: UIViewController {
         priceLabel.isHidden = true
         checkoutButton.isHidden = true
         emptyView.isHidden = true
+        paymentSuccessView.isHidden = true
     }
     
     internal func hideOrDisplay(isEmpty: Bool) {
@@ -123,6 +134,15 @@ class CartViewController: UIViewController {
         
         paymentVC.onAction = {[weak self] success, message in
             success ? self?.checkOutControllerCreator(step: 2, secondController: reviewVC) : self?.showAlert(title: "Error", message: message)
+        }
+        
+        reviewVC.onaction = {[weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                self?.navigationController?.viewControllers.popLast()
+                self?.navigationController?.viewControllers.popLast()
+                self?.navigationController?.viewControllers.popLast()
+                self?.paymentSuccessView.isHidden = false
+            }
         }
     }
     
@@ -209,5 +229,6 @@ class CartViewController: UIViewController {
             make.bottom.equalTo(totalLabel.snp.top).offset(-24)
         }
         emptyView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges) }
+        paymentSuccessView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges) }
     }
 }

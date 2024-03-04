@@ -29,7 +29,6 @@
 		EB3A02362B7646A20028172C /* ShippingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A02352B7646A20028172C /* ShippingViewModel.swift */; };
 		EB3A02382B76471F0028172C /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A02372B76471F0028172C /* Address.swift */; };
 		EB3A62A22B90ACF800E57CB2 /* ReviewViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A62A12B90ACF800E57CB2 /* ReviewViewController+UITableView.swift */; };
-		EB3A62A62B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A62A52B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift */; };
 		EB3A62A82B90B41B00E57CB2 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A62A72B90B41B00E57CB2 /* ReviewTableViewCell.swift */; };
 		EB3E25A82B40728100B6AF49 /* EntryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E25A72B40728100B6AF49 /* EntryPage.swift */; };
 		EB3F2C2E2B91BC2200219A8F /* ReviewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3F2C2D2B91BC2200219A8F /* ReviewTableHeaderView.swift */; };
@@ -123,7 +122,6 @@
 		EB3A02352B7646A20028172C /* ShippingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingViewModel.swift; sourceTree = "<group>"; };
 		EB3A02372B76471F0028172C /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		EB3A62A12B90ACF800E57CB2 /* ReviewViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReviewViewController+UITableView.swift"; sourceTree = "<group>"; };
-		EB3A62A52B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemsTableViewCell.swift; sourceTree = "<group>"; };
 		EB3A62A72B90B41B00E57CB2 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		EB3E25A72B40728100B6AF49 /* EntryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPage.swift; sourceTree = "<group>"; };
 		EB3F2C2D2B91BC2200219A8F /* ReviewTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableHeaderView.swift; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 			children = (
 				EB86FEBB2B834315002EB1CD /* ReviewViewController.swift */,
 				EB3A62A12B90ACF800E57CB2 /* ReviewViewController+UITableView.swift */,
-				EB3A62A52B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift */,
 				EB3A62A72B90B41B00E57CB2 /* ReviewTableViewCell.swift */,
 				EB3F2C2D2B91BC2200219A8F /* ReviewTableHeaderView.swift */,
 			);
@@ -774,7 +771,6 @@
 				EB5060A52B7633B100D567EC /* ChangePasswordViewModel.swift in Sources */,
 				EBAC61AE2B1F5B7700F18D31 /* LoginViewController.swift in Sources */,
 				EB66E73A2B35B321008D4AC3 /* Product.swift in Sources */,
-				EB3A62A62B90B2E300E57CB2 /* ReviewItemsTableViewCell.swift in Sources */,
 				EBB094112B4EB17C00CA75C7 /* CategoriesViewModel.swift in Sources */,
 				EB2C6FB42B5EB58300DD0901 /* FilterTableViewCell.swift in Sources */,
 				EBB094132B4EBA8800CA75C7 /* HomeViewController+CollectionView.swift in Sources */,
